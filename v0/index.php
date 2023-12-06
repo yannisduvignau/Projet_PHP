@@ -23,8 +23,8 @@
             $cd_data = base64_encode($cd->asXML());
             echo '<div class="cd">';
             echo '<a class="btn-link" onclick="showDetails(\'' . $cd_data . '\')">Voir les détails</a>';
-            echo '<img src="' . $cd->image . '" alt="' . $cd->title . '">';
-            echo '<br>' . $cd->title . '<br>' . $cd->artist . '<br>';
+            echo '<img src="' . $cd->image . '" alt="' . $cd->titre . '">';
+            echo '<br>' . $cd->titre . '<br>' . $cd->artiste . '<br>';
             echo '</div>';
         }
         ?>
@@ -44,25 +44,25 @@
 
             // Extrait les détails du CD
             var id = cd.querySelector('id')? cd.querySelector('id').textContent : 'N/A';;
-            var title = cd.querySelector('title') ? cd.querySelector('title').textContent : 'N/A';
+            var titre = cd.querySelector('titre') ? cd.querySelector('titre').textContent : 'N/A';
             var image = cd.querySelector('image') ? cd.querySelector('image').textContent : '';
-            var artist = cd.querySelector('artist') ? cd.querySelector('artist').textContent : 'N/A';
+            var artiste = cd.querySelector('artiste') ? cd.querySelector('artiste').textContent : 'N/A';
             var genre = cd.querySelector('genre') ? cd.querySelector('genre').textContent : 'N/A';
-            var price = cd.querySelector('price') ? cd.querySelector('price').textContent : 'N/A';
+            var prixUnitaire = cd.querySelector('prixUnitaire') ? cd.querySelector('prixUnitaire').textContent : 'N/A';
 
             modalContent.innerHTML = `
                 <span class="close" onclick="closeModal()">&times;</span>
-                <h1>${title}</h1>
-                ${image ? `<img src="${image}" alt="${title}">` : ''}
-                <p>Artist: ${artist}</p>
+                <h1>${titre}</h1>
+                ${image ? `<img src="${image}" alt="${titre}">` : ''}
+                <p>Auteur: ${artiste}</p>
                 <p>Genre: ${genre}</p>
-                <a class="price"> $${price}</a>
+                <a class="price"> $${prixUnitaire}</a>
                 <form method="POST" action="ajouter_panier.php">
-                    <input type="hidden" name="product_id" value=${id}>
-                    <input type="hidden" name="product_name" value=${title}>
-                    <input type="hidden" name="product_price" value=${price}>
-                    <input type="number" name="product_qte" value="1" step="1">
-                    <button type="submit" name="add_to_cart" class="btn-link">Ajouter au panier</button>
+                    <input type="hidden" name="produit_id" value=${id}>
+                    <input type="hidden" name="produit_titre" value=${titre}>
+                    <input type="hidden" name="produit_prix" value=${prixUnitaire}>
+                    <input type="number" name="produit_qte" value="1" step="1">
+                    <button type="submit" name="ajouter_panier" class="btn-link">Ajouter au panier</button>
                 </form>
                 <!-- Ajoutez d'autres détails ici -->
             `;
