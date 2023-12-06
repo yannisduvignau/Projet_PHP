@@ -52,10 +52,10 @@
 
         // Formulaire de paiement simulé
         echo '<form method="post" action="regarder_panier.php">';
-        echo '<label for="credit_card_number">Credit Card Number:</label>';
-        echo '<input type="text" name="credit_card_number" required>';
-        echo '<label for="expiration_date">Expiration Date (MM/YYYY):</label>';
-        echo '<input type="text" name="expiration_date" required>';
+        echo '<label for="credit_card_number" required minlength="12" maxlength="12">Credit Card Number : </label>';
+        echo '<input type="text" name="credit_card_number" required><br/>';
+        echo '<label for="expiration_date">Expiration Date (MM/YYYY) : </label>';
+        echo '<input type="text" name="expiration_date" required><br>';
         echo '<button type="submit" name="checkout">Checkout</button>';
         echo '</form>';
     
@@ -65,11 +65,11 @@
     ?>
 
     <!-- Ajoutez un lien pour vider le panier -->
-    <br>
-    <a href="vider_panier.php">Vider le panier</a>
+    <br><br/>
+    <a href="vider_panier.php" class="lienImportant">Vider le panier</a>
 
     <!-- Ajoutez un lien pour revenir à la page principale -->
-    <br>
-    <a href="index.php">Retour à la page principale</a>
+    <br><br/>
+    <a href="index.php" class="lienImportant">Retour à la page principale</a>
 </body>
 </html>
