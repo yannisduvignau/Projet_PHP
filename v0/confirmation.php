@@ -8,6 +8,7 @@
 <body>
     <h1>Commande confirmée !</h1>
     <p>Merci pour votre achat. Votre commande a été confirmée.</p>
+    <img src="images/shopping.gif" width="20%" height="auto" alt="shopping image">
     <a href="vider_panier.php">Back to CD Store</a>
 </body>
 </html>

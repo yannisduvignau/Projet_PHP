@@ -8,6 +8,6 @@ if (isset($_SESSION['panier'])) {
 }
 
 // Redirige vers la page de visualisation du panier
-header('Location: regarder_panier.php');
+header('Location: index.php');
 exit();
 ?>
