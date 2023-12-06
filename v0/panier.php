@@ -35,8 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <h1>Shopping Cart</h1>
 
     <?php
-    if (!empty($_SESSION['cart'])) {
-        foreach ($_SESSION['cart'] as $cd) {
+    if (!empty($_SESSION['panier'])) {
+        foreach ($_SESSION['panier'] as $cd) {
             echo '<div>';
             echo '<img src="' . $cd->image . '" alt="' . $cd->title . '">';
             echo '<h2>' . $cd->title . '</h2>';

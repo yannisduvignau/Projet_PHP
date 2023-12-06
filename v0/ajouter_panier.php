@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'prix' => $produit_prix,
                 'quantite' => $produit_qte
             ];
-            $_SESSION['cart'][] = $produit;
+            $_SESSION['panier'][] = $produit;
         }
     }
 }

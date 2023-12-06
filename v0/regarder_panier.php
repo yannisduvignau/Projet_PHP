@@ -22,7 +22,7 @@
             // Vérifie si l'élément est un tableau
             if (is_array($item)) {
                 // Affichage contenu panier
-                echo '<li> Titre : ' . $item['titre'] . ' - Prix : $' . $item['prix'] . ' - Quantité : ' . $item['quantite'] . '<span style="diplay:inline-block;margin-left: 40px;">Sous-total : $' . $item['price']*$item['quantity'] . '</span></li>';
+                echo '<li> Titre : ' . $item['titre'] . ' - Prix : $' . $item['prix'] . ' - Quantité : ' . $item['quantite'] . '<span style="diplay:inline-block;margin-left: 40px;">Sous-total : $' . $item['prix']*$item['quantite'] . '</span></li>';
                 $cptCds += $item['quantite'];
                 $prixTotal += $item['prix']*$item['quantite'];
             } else {
