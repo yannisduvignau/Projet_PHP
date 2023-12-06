@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -15,7 +16,7 @@
     <div id="resultat"></div>
     <div class="cd-container">
         <?php
-        session_start();
+        
         $cds = simplexml_load_file('xml/cds.xml');
         //Affichage de tous les CDs
         foreach ($cds as $cd) {
@@ -60,6 +61,7 @@
                     <input type="hidden" name="product_id" value=${id}>
                     <input type="hidden" name="product_name" value=${title}>
                     <input type="hidden" name="product_price" value=${price}>
+                    <input type="number" name="product_qte" value="1" step="1">
                     <button type="submit" name="add_to_cart" class="btn-link">Ajouter au panier</button>
                 </form>
                 <!-- Ajoutez d'autres détails ici -->

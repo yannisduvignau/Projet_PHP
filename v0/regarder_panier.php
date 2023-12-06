@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -10,20 +11,27 @@
     <h1>Panier</h1>
 
     <?php
-    session_start();
+    
 
     // Affiche le contenu du panier
     if (!empty($_SESSION['cart'])) {
+        $cptCds = 0;
+        $prixTotal = 0;
         echo '<ul>';
         foreach ($_SESSION['cart'] as $item) {
             // Vérifie si l'élément est un tableau
             if (is_array($item)) {
-                echo '<li> Titre:' . $item['name'] . ' - Prix: $' . $item['price'] . ' - Quantité: ' . $item['quantity'] . '</li>';
+                // Affichage contenu panier
+                echo '<li> Titre : ' . $item['name'] . ' - Prix : $' . $item['price'] . ' - Quantité : ' . $item['quantity'] . '<span style="diplay:inline-block;margin-left: 40px;">Sous-total : $' . $item['price']*$item['quantity'] . '</span></li>';
+                $cptCds += $item['quantity'];
+                $prixTotal += $item['price']*$item['quantity'];
             } else {
                 echo '<li> Erreur: élément de panier invalide </li>';
             }
         }
         echo '</ul>';
+        // Affichage total
+        echo '<h3>NB ITEM TOTAL : ' . $cptCds . '<span style="diplay:inline-block;margin-left: 20px;">PRIX TOTAL : $' . $prixTotal . '</h3>';
     } else {
         echo '<p>Le panier est vide.</p>';
     }

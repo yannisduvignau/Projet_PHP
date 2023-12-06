@@ -6,6 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $product_id = $_POST['product_id'];
         $product_name = $_POST['product_name'];
         $product_price = $_POST['product_price'];
+        $product_qte = $_POST['product_qte'];
 
         // Initialise le panier s'il n'existe pas encore
         if (!isset($_SESSION['cart']) || !is_array($_SESSION['cart'])) {
@@ -17,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         foreach ($_SESSION['cart'] as &$item) {
             // Vérifie si l'élément est un tableau et a une clé 'id'
             if (is_array($item) && isset($item['id']) && $item['id'] === $product_id) {
-                $item['quantity']++;
+                $item['quantity'] = $item['quantity'] + $product_qte;
                 $product_exists = true;
                 break;
             }
@@ -29,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'id' => $product_id,
                 'name' => $product_name,
                 'price' => $product_price,
-                'quantity' => 1
+                'quantity' => $product_qte
             ];
             $_SESSION['cart'][] = $product;
         }
