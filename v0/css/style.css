@@ -161,9 +161,9 @@ p{
     border-radius:4px;
     transition-duration: 0.2s;
     box-shadow: 5px 5px 5px #acacac;
-    position: absolute;
+    /*position: absolute;
     top: 55%;
-    left: 44%;
+    left: 44%;*/
 }
 
 #backToIndex:hover{

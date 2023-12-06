@@ -24,6 +24,7 @@
     <link href="css/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+    <img style="position:absolute;top:2%;right:5%;width:80px;height:auto;" src="images/logoCDIcon.png" alt="Logo"></img>
     <h1>Panier</h1>
     
     <?php
