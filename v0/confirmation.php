@@ -6,8 +6,8 @@
     <title>Confirmation</title>
 </head>
 <body>
-    <h1>Order Confirmed!</h1>
-    <p>Thank you for your purchase. Your order has been confirmed.</p>
-    <a href="index.php">Back to CD Store</a>
+    <h1>Commande confirmée !</h1>
+    <p>Merci pour votre achat. Votre commande a été confirmée.</p>
+    <a href="vider_panier.php">Back to CD Store</a>
 </body>
 </html>

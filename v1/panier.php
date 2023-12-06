@@ -2,11 +2,6 @@
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Ajoutez le CD au panier
-    if (isset($_POST['add_to_cart'])) {
-        $cd = simplexml_load_string($_POST['cd']);
-        $_SESSION['cart'][] = $cd;
-    }
 
     // Simulez le paiement (ajoutez vos vérifications ici)
     if (isset($_POST['checkout'])) {
