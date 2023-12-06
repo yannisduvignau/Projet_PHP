@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cds>
+    <cd>
+        <id>1</id>
+        <genre>Rap</genre>
+        <title>Album 1</title>
+        <artist>Artist 1</artist>
+        <price>10.99</price>
+        <image>images/pochette7.jpg</image>
+    </cd>
+    <cd>
+        <id>2</id>
+        <genre>Rock</genre>
+        <title>Album 1</title>
+        <artist>Artist 1</artist>
+        <price>10.99</price>
+        <image>images/pochette8.jpg</image>
+    </cd>
+    <cd>
+        <id>3</id>
+        <genre>Rock</genre>
+        <title>Album 1</title>
+        <artist>Artist 1</artist>
+        <price>10.99</price>
+        <image>images/pochette9.jpg</image>
+    </cd>
+    <cd>
+        <id>4</id>
+        <genre>Rock</genre>
+        <title>Album 1</title>
+        <artist>Artist 1</artist>
+        <price>10.99</price>
+        <image>images/pochette10.jpg</image>
+    </cd>
+    <cd>
+        <id>5</id>
+        <genre>Rock</genre>
+        <title>Album 1</title>
+        <artist>Artist 1</artist>
+        <price>10.99</price>
+        <image>images/pochette1.jpg</image>
+    </cd>
+    <cd>
+        <id>6</id>
+        <genre>Rock</genre>
+        <title>Album 1</title>
+        <artist>Artist 1</artist>
+        <price>10.99</price>
+        <image>images/pochette2.jpg</image>
+    </cd>
+    <cd>
+        <id>7</id>
+        <genre>Rock</genre>
+        <title>Album 1</title>
+        <artist>Artist 1</artist>
+        <price>10.99</price>
+        <image>images/pochette3.jpg</image>
+    </cd>
+    <cd>
+        <id>8</id>
+        <genre>Rock</genre>
+        <title>Album 1</title>
+        <artist>Artist 1</artist>
+        <price>10.99</price>
+        <image>images/pochette4.jpg</image>
+    </cd>
+    <cd>
+        <id>9</id>
+        <genre>Rock</genre>
+        <title>Album 1</title>
+        <artist>Artist 1</artist>
+        <price>10.99</price>
+        <image>images/pochette5.jpg</image>
+    </cd>
+    <cd>
+        <id>10</id>
+        <genre>Rock</genre>
+        <title>Album 1</title>
+        <artist>Artist 1</artist>
+        <price>10.99</price>
+        <image>images/pochette6.jpg</image>
+    </cd>
+    <cd>
+        <id>11</id>
+        <genre>Rock</genre>
+        <title>Album 1</title>
+        <artist>Artist 1</artist>
+        <price>10.99</price>
+        <image>images/pochette11.jpg</image>
+    </cd>
+    <cd>
+        <id>12</id>
+        <genre>Rock</genre>
+        <title>Album 1</title>
+        <artist>Artist 1</artist>
+        <price>10.99</price>
+        <image>images/pochette12.jpg</image>
+    </cd>
+    <cd>
+        <id>13</id>
+        <genre>Rock</genre>
+        <title>Album 1</title>
+        <artist>Artist 1</artist>
+        <price>10.99</price>
+        <image>images/pochette13.jpg</image>
+    </cd>
+    <cd>
+        <id>14</id>
+        <genre>Rock</genre>
+        <title>Album 1</title>
+        <artist>Artist 1</artist>
+        <price>10.99</price>
+        <image>images/pochette14.png</image>
+    </cd>
+    <cd>
+        <id>15</id>
+        <genre>Rock</genre>
+        <title>Album 1</title>
+        <artist>Artist 1</artist>
+        <price>10.99</price>
+        <image>images/pochette15.jpg</image>
+    </cd>
+    <!-- Ajoutez d'autres CDs ici -->
+</cds>
