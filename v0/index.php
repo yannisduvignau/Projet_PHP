@@ -11,7 +11,8 @@
     <h1>CD Store</h1>
     <p>=> Un site web de vente de CD (oui, oui, ça existe encore !) en ligne</p>
     <!-- Ajoutez le lien vers la page du panier -->
-    <a href="regarder_panier.php">Voir le panier</a>
+    <a href="regarder_panier.php" class="lienImportant">Voir le panier</a>
+    <br/><br/>
     <!-- Ajoutez une div pour afficher la réponse de la requête AJAX -->
     <div id="resultat"></div>
     <div class="cd-container">
