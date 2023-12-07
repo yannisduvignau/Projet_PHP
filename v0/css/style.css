@@ -131,7 +131,7 @@ p{
     padding: 10px 15px;
     margin-top: 120px;
     margin-left: 25px;
-    background-color: #007bff; /* Couleur de fond du bouton */
+    background-color: #8f49ff; /* Couleur de fond du bouton */
     color: #fff; /* Couleur du texte du bouton */
     text-decoration: none;
     border-radius: 5px; /* Coins arrondis */
@@ -139,8 +139,19 @@ p{
     cursor: pointer;
 }
 
+/*  Amélioration btn sur cd */
+.cd .btn-link{
+    visibility: hidden;
+    opacity:0;
+    transition:visibility 0.3s linear,opacity 0.3s linear, background-color 0.3s;
+}
+.cd:hover .btn-link{
+    visibility: visible;
+    opacity: 1;
+}
+
 .btn-link:hover {
-    background-color: #0056b3; /* Nouvelle couleur de fond au survol */
+    background-color: #7a00b3; /* Nouvelle couleur de fond au survol */
 }
 
 .lienImportant {
@@ -170,3 +181,9 @@ p{
     background-color: #555;
     box-shadow: 5px 5px 5px #8d8d8d;
 }
+
+
+/* Test transition cd to modal */
+/* .btn-link:focus{
+    transform: rotate(180deg);
+} */
