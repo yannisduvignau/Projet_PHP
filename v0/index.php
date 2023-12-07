@@ -59,6 +59,7 @@
                 <p>Auteur: ${artiste}</p>
                 <p>Genre: ${genre}</p>
                 <a class="price"> $${prixUnitaire}</a>
+                <!-- <div class="cercleCd"></div> -->
                 <form method="POST" action="ajouter_panier.php">
                     <input type="hidden" name="produit_id" value=${id}>
                     <input type="hidden" name="produit_titre" value=${titre}>
