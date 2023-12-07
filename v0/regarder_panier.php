@@ -161,13 +161,25 @@
             border-radius: 50%;
             opacity: 0.05;
         }
+        label,input{
+            margin-top: 30px;
+        }
+        button{
+            padding:10px 20px;
+            background-color: green;
+            color:white;
+            font-weight: bold;
+            position: relative;
+            margin-top: 20px;
+            left:40%
+        }
         
     </style>
 </head>
 <body>
     <img style="position:absolute;top:2%;right:5%;width:80px;height:auto;" src="images/logoCDIcon.png" alt="Logo"></img>
     <h1>Panier</h1>
-    
+
     <?php
     
 
@@ -216,7 +228,7 @@
         echo '<input type="text" placeholder="XXXX XXXX XXXX XXXX" name="credit_card_number" required><br/>';
         echo '<label for="expiration_date">Expiration Date (MM/YYYY) : </label>';
         echo '<input type="text" name="expiration_date" required><br>';
-        echo '<button type="submit" name="checkout">Checkout</button>';
+        echo '<button type="submit" name="checkout">Valider</button>';
         echo '</form>';
     
     } else {
