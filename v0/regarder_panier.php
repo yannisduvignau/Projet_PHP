@@ -29,7 +29,7 @@
             padding: 10px 20px;
         }
         input[type="text"]:focus{
-            border: 3px solid purple;
+            border: 3px solid black;
         }
         /*Carte de crédit*/
         .container-placement{
@@ -168,13 +168,16 @@
         }
         button{
             padding:10px 20px;
-            background-color: green;
+            background-color: black;
             color:white;
-            font-weight: bold;
+            /*font-weight: bold;*/
+            font-size: 17px;
             position: relative;
             margin-top: 20px;
-            left:40%
-            /*border-color:none;*/
+            left:40%;
+            border-radius: 15px;
+            cursor: pointer;
+            border:none;
         }
         li{
             padding: 20px;
@@ -200,6 +203,65 @@
             grid-column: 2;
         }
     </style>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Sélectionnez les champs du formulaire
+            const creditCardNumberInput = document.querySelector('input[name="credit_card_number"]');
+            const expirationDateInput = document.querySelector('input[name="expiration_date"]');
+            const cardNumberElement = document.querySelector('.card-number');
+            const cardExpireElement = document.querySelector('.card-expire');
+            const cardNameElement = document.querySelector('.card-name');
+
+            // Écoutez les événements de saisie sur le numéro de carte de crédit
+            creditCardNumberInput.addEventListener('input', function () {
+                // Obtenez la valeur du champ
+                let value = this.value;
+
+                // Supprimez tous les espaces de la valeur
+                value = value.replace(/\s/g, '');
+
+                // Limitez le nombre de caractères à 16
+                value = value.substr(0, 16);
+
+                // Ajoutez des espaces après chaque groupe de 4 chiffres
+                value = value.replace(/(\d{4})/g, '$1 ').trim();
+
+                // Mettez à jour la valeur du champ
+                this.value = value;
+
+                // Mettez à jour le numéro de carte sur la carte simulée
+                cardNumberElement.textContent = value ? value.padEnd(16, '*').replace(/(.{4})/, '$1 ') : '0000 0000 0000 0000';
+            });
+
+            // Écoutez les événements de saisie sur la date d'expiration
+            expirationDateInput.addEventListener('input', function () {
+                // Obtenez la valeur du champ
+                let value = this.value;
+
+                // Supprimez tous les caractères non numériques de la valeur
+                value = value.replace(/\D/g, '');
+
+                // Limitez le nombre de caractères à 6 (MM/YYYY)
+                value = value.substr(0, 6);
+
+                // Ajoutez le caractère "/" après les deux premiers chiffres
+                value = value.replace(/(\d{2})(\d{0,4})/, '$1/$2').trim();
+
+                // Mettez à jour la valeur du champ
+                this.value = value;
+
+                // Mettez à jour la date d'expiration sur la carte simulée
+                cardExpireElement.textContent = 'Expire ' + (value ? value : '00/00');
+            });
+
+            // Écoutez les événements de saisie sur le nom et prénom
+            document.querySelector('input[name="getName"]').addEventListener('input', function () {
+                // Mettez à jour le nom sur la carte simulée
+                cardNameElement.textContent = 'M ' + (this.value ? this.value : 'John Doe');
+            });
+        });
+    </script>
 </head>
 <body>
     <img style="position:absolute;top:2%;right:5%;width:80px;height:auto;" src="images/logoCDIcon.png" alt="Logo"></img>
@@ -217,7 +279,7 @@
                 // Vérifie si l'élément est un tableau
                 if (is_array($item)) {
                     // Affichage contenu panier
-                    echo '<li> Titre : ' . $item['titre'] . ' - Prix : $' . $item['prix'] . ' - Quantité : ' . $item['quantite'] . '<span style="diplay:inline-block;margin-left: 40px;">Sous-total : $' . $item['prix']*$item['quantite'] . '</span></li>';
+                    echo '<li> Titre : ' . $item['titre'] . ' - Prix : $' . $item['prix'] . ' - Quantité : ' . $item['quantite'] . '</br><span style="diplay:inline-block;">Sous-total : $' . $item['prix']*$item['quantite'] . '</span></li>';
                     $cptCds += $item['quantite'];
                     $prixTotal += $item['prix']*$item['quantite'];
                 } else {
@@ -226,7 +288,7 @@
             }
             echo '</ul>';
             // Affichage total
-            echo '<h3>NB ITEM TOTAL : ' . $cptCds . '<span style="diplay:inline-block;margin-left: 20px;">PRIX TOTAL : $' . $prixTotal . '</h3>';
+            echo '<h3>Nombre de CD total : ' . $cptCds . '</br><span style="diplay:inline-block;">Prix total : $' . $prixTotal . '</h3>';
             
 
             // Formulaire de paiement simulé
@@ -247,13 +309,13 @@
             echo '</div>';
             //Formulaire
             echo '<form method="post" action="regarder_panier.php" class="formulairePaiement">';
-            echo '<label for="getName">Nom et Prénom(NOM PRENOM) : </label></br>';
-            echo '<input type="text" name="getName" required></br>';
+            echo '<label for="getName">Nom et Prénom : </label></br>';
+            echo '<input type="text" placeholder="NOM PRENOM" name="getName" required></br>';
             echo '<label for="credit_card_number" required minlength="12" maxlength="12">Credit Card Number : </label></br>';
             echo '<input type="text" placeholder="XXXX XXXX XXXX XXXX" name="credit_card_number" required></br>';
-            echo '<label for="expiration_date">Expiration Date (MM/YYYY) : </label></br>';
-            echo '<input type="text" name="expiration_date" required></br>';
-            echo '<button type="submit" name="checkout">Valider</button>';
+            echo "<label for='expiration_date'>Date d'expiration : </label></br>";
+            echo '<input type="text" placeholder="MM/YYYY" name="expiration_date" required></br>';
+            echo '<button type="submit" name="checkout" class="lienImportant">Valider</button>';
             echo '</form>';
             echo ' </div>';
             echo '</br></br></br>

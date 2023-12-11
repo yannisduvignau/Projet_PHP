@@ -80,12 +80,9 @@ p{
     margin: 0;
     margin-top: 10px;
     margin-left: 30%;
-    background-color: #b38300;
+    background-color: black;
 }
 
-.modal-content .btn-link:hover{
-    background-color: #866300;
-}
 
 .modal-content .price{
     position:relative;
@@ -186,6 +183,10 @@ p{
     padding: 10px 20px;
     border-radius: 10px;
     cursor: pointer;
+}
+
+.lienImportant:hover{
+    background-color: #7a00b3;
 }
 
 
