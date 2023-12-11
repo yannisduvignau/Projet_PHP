@@ -29,7 +29,7 @@
             padding: 10px 20px;
         }
         input[type="text"]:focus{
-            border: 3px solid #555;
+            border: 3px solid purple;
         }
         /*Carte de crédit*/
         .container-placement{
@@ -85,20 +85,22 @@
             position: absolute;
             top: 50%;
             left: 5%;
-            font-size: 1.7rem;
+            font-size: 2vw;
             font-family: sans-serif;
             color: white;
             text-shadow: 0px 0px 5px black;
+            margin: 0;
+            margin-top: 8%;
         }
         .arrow {
             position: absolute;
             top: 80%;
-            left: 5%;
+            left: 4%;
             width: 0; 
             height: 0; 
-            border-top: 15px solid transparent;
-            border-bottom: 15px solid transparent; 
-            border-right:15px solid white; 
+            border-top: 1.3vw solid transparent;
+            border-bottom: 1.3vw solid transparent; 
+            border-right:1.3vw solid white; 
         }
         .card-name, .card-expire {
             position: absolute;
@@ -111,22 +113,22 @@
 
         .card-name {
             top: 74%;
-            font-size: 0.9rem;
+            font-size: 1.1vw;
         }
 
         .card-expire {
             top: 82%;
-            font-size: 0.8rem;
+            font-size: 1vw;
         }
         .bank-name {
             margin: 0;
             display: inline-block;
-            padding: 8px 10px;
+            padding: 2% 3%;
             padding-left: 2%;
             position: absolute;
             top: 10%;
             left: 0;
-            font-size: 1rem;
+            font-size: 1.1vw;
             font-family: sans-serif;
             color: black;
             font-weight: bold;
@@ -161,8 +163,8 @@
             border-radius: 50%;
             opacity: 0.05;
         }
-        label,input{
-            margin-top: 30px;
+        input{
+            margin-bottom: 30px;
         }
         button{
             padding:10px 20px;
@@ -172,76 +174,97 @@
             position: relative;
             margin-top: 20px;
             left:40%
+            /*border-color:none;*/
         }
-        
+        li{
+            padding: 20px;
+            box-shadow: 0px 3px 0px 0px #ccc;
+        }
+        .wrapper{
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: 20px;
+        }
+
+        ul{
+            grid-column: 1;
+        }
+        h3{
+            grid-column: 1;
+        }
+        .container-placement{
+            grid-column: 2;
+            grid-row: 1;
+        }
+        .formulairePaiement{
+            grid-column: 2;
+        }
     </style>
 </head>
 <body>
     <img style="position:absolute;top:2%;right:5%;width:80px;height:auto;" src="images/logoCDIcon.png" alt="Logo"></img>
     <h1>Panier</h1>
-
-    <?php
-    
-
-    // Affiche le contenu du panier
-    if (!empty($_SESSION['panier'])) {
-        $cptCds = 0;
-        $prixTotal = 0;
-        echo '<ul>';
-        foreach ($_SESSION['panier'] as $item) {
-            // Vérifie si l'élément est un tableau
-            if (is_array($item)) {
-                // Affichage contenu panier
-                echo '<li> Titre : ' . $item['titre'] . ' - Prix : $' . $item['prix'] . ' - Quantité : ' . $item['quantite'] . '<span style="diplay:inline-block;margin-left: 40px;">Sous-total : $' . $item['prix']*$item['quantite'] . '</span></li>';
-                $cptCds += $item['quantite'];
-                $prixTotal += $item['prix']*$item['quantite'];
-            } else {
-                echo '<li> Erreur: élément de panier invalide </li>';
-            }
-        }
-        echo '</ul>';
-        // Affichage total
-        echo '<h3>NB ITEM TOTAL : ' . $cptCds . '<span style="diplay:inline-block;margin-left: 20px;">PRIX TOTAL : $' . $prixTotal . '</h3>';
+        <?php
         
 
-        // Formulaire de paiement simulé
-        //Carte de paiement
-        echo '<div class="container-placement">';
-        echo '<div class="card-container">';
-        echo '<div class="card">';
-        echo '<img class="chip" src="images/chip.png"/>';
-        echo '<img class="contactless" src="images/wifi.png"/>';
-        echo '<img class="visa"src="images/visa.png"/>';
-        echo '<p class="card-number">0000 0000 0000 0000</p>';
-        echo '<div class="arrow"></div>';
-        echo '<p class="card-name">M John Doe</p>';
-        echo '<p class="card-expire">Expire 00/00</p>';
-        echo '<p class="bank-name">Bank 1337</p>';
-        echo '</div>';
-        echo '</div>';
-        echo '</div>';
-        //Formulaire
-        echo '<form method="post" action="regarder_panier.php">';
-        echo '<label for="getName">Nom et Prénom(NOM PRENOM) : </label>';
-        echo '<input type="text" name="getName" required><br>';
-        echo '<label for="credit_card_number" required minlength="12" maxlength="12">Credit Card Number : </label>';
-        echo '<input type="text" placeholder="XXXX XXXX XXXX XXXX" name="credit_card_number" required><br/>';
-        echo '<label for="expiration_date">Expiration Date (MM/YYYY) : </label>';
-        echo '<input type="text" name="expiration_date" required><br>';
-        echo '<button type="submit" name="checkout">Valider</button>';
-        echo '</form>';
-    
-    } else {
-        echo '<p>Le panier est vide.</p>';
-    }
-    ?>
+        // Affiche le contenu du panier
+        if (!empty($_SESSION['panier'])) {
+            $cptCds = 0;
+            $prixTotal = 0;
+            echo '<div class="wrapper">';
+            echo '<ul>';
+            foreach ($_SESSION['panier'] as $item) {
+                // Vérifie si l'élément est un tableau
+                if (is_array($item)) {
+                    // Affichage contenu panier
+                    echo '<li> Titre : ' . $item['titre'] . ' - Prix : $' . $item['prix'] . ' - Quantité : ' . $item['quantite'] . '<span style="diplay:inline-block;margin-left: 40px;">Sous-total : $' . $item['prix']*$item['quantite'] . '</span></li>';
+                    $cptCds += $item['quantite'];
+                    $prixTotal += $item['prix']*$item['quantite'];
+                } else {
+                    echo '<li> Erreur: élément de panier invalide </li>';
+                }
+            }
+            echo '</ul>';
+            // Affichage total
+            echo '<h3>NB ITEM TOTAL : ' . $cptCds . '<span style="diplay:inline-block;margin-left: 20px;">PRIX TOTAL : $' . $prixTotal . '</h3>';
+            
 
-    <!-- Ajoutez un lien pour vider le panier -->
-    <br><br/>
-    <a href="vider_panier.php" class="lienImportant">Vider le panier</a>
+            // Formulaire de paiement simulé
+            //Carte de paiement
+            echo '<div class="container-placement">';
+            echo '<div class="card-container">';
+            echo '<div class="card">';
+            echo '<img class="chip" src="images/chip.png"/>';
+            echo '<img class="contactless" src="images/wifi.png"/>';
+            echo '<img class="visa"src="images/visa.png"/>';
+            echo '<p class="card-number">0000 0000 0000 0000</p>';
+            echo '<div class="arrow"></div>';
+            echo '<p class="card-name">M John Doe</p>';
+            echo '<p class="card-expire">Expire 00/00</p>';
+            echo '<p class="bank-name">Bank 1337</p>';
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
+            //Formulaire
+            echo '<form method="post" action="regarder_panier.php" class="formulairePaiement">';
+            echo '<label for="getName">Nom et Prénom(NOM PRENOM) : </label></br>';
+            echo '<input type="text" name="getName" required></br>';
+            echo '<label for="credit_card_number" required minlength="12" maxlength="12">Credit Card Number : </label></br>';
+            echo '<input type="text" placeholder="XXXX XXXX XXXX XXXX" name="credit_card_number" required></br>';
+            echo '<label for="expiration_date">Expiration Date (MM/YYYY) : </label></br>';
+            echo '<input type="text" name="expiration_date" required></br>';
+            echo '<button type="submit" name="checkout">Valider</button>';
+            echo '</form>';
+            echo ' </div>';
+            echo '</br></br></br>
+            <!-- Ajoutez un lien pour vider le panier -->
+            <span><a href="vider_panier.php" class="lienImportant">Vider le panier</a></span>';
+        } else {
+            echo '<p>Le panier est vide.</p>';
+        }
+        ?>
 
     <!-- Ajoutez un lien pour revenir à la page principale -->
-    <br><br/>
-    <a href="index.php" class="lienImportant">Retour à la page principale</a>
+    <span><a href="index.php" class="lienImportant">Retour à la page principale</a></span>
 </body>
 </html>

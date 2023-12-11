@@ -38,6 +38,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 // Redirige vers la page de visualisation du panier
-header('Location: regarder_panier.php');
+header('Location: index.php');
 exit();
 ?>
