@@ -23,10 +23,13 @@
         //Affichage de tous les CDs
         foreach ($cds as $cd) {
             $cd_data = base64_encode($cd->asXML());
+            // test
+            echo '<div class="disque">';
             echo '<div class="cd">';
             echo '<a class="btn-link" onclick="showDetails(\'' . $cd_data . '\')">Voir les détails</a>';
             echo '<img src="' . $cd->image . '" alt="' . $cd->titre . '">';
             echo '<br>' . $cd->titre . '<br>' . $cd->artiste . '<br>';
+            echo '</div>';
             echo '</div>';
         }
         ?>
@@ -64,7 +67,7 @@
                     <input type="hidden" name="produit_id" value=${id}>
                     <input type="hidden" name="produit_titre" value=${titre}>
                     <input type="hidden" name="produit_prix" value=${prixUnitaire}>
-                    <input type="number" name="produit_qte" value="1" step="1">
+                    <input type="number" name="produit_qte" value="1" step="1" style="box-shadow:3px 3px 3px #33333350">
                     <button type="submit" name="ajouter_panier" class="btn-link">Ajouter au panier</button>
                 </form>
                 <!-- Ajoutez d'autres détails ici -->
@@ -74,6 +77,12 @@
 
             // Ajoute le modal au document
             document.body.appendChild(modal);
+
+            // Test script pour rotation cd
+            document.querySelector('.modal-content img').addEventListener('onmouseover', function(){
+                document.querySelector('.modal-content img').style.transform="rotate(360000000deg)";
+                document.querySelector('.modal-content img').style.transition="transform 360000s";
+            });
         }
 
         function closeModal() {

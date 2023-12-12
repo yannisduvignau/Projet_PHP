@@ -1,15 +1,15 @@
 <?php session_start(); 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-        // Simulez le paiement (ajoutez vos vérifications ici)
+        // Simule le paiement (ajoute vos vérifications ici)
         if (isset($_POST['checkout'])) {
             $credit_card_number = $_POST['credit_card_number'];
             $expiration_date = $_POST['expiration_date'];
 
-            // Effectuez les vérifications nécessaires ici
+            // Effectue les vérifications nécessaires ici
             //On simulera le paiement en vérifiant la saisie des 16 chiffres et vérifiant que le dernier est identique au premier, et que la date de validité est supérieure à la date du jour + 3 mois.
 
-            // Si tout est OK, affichez la confirmation
+            // Si tout est OK, affiche la confirmation
             header('Location: confirmation.php');
             exit();
         }
@@ -206,58 +206,58 @@
     
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // Sélectionnez les champs du formulaire
+            // Sélectionne les champs du formulaire
             const creditCardNumberInput = document.querySelector('input[name="credit_card_number"]');
             const expirationDateInput = document.querySelector('input[name="expiration_date"]');
             const cardNumberElement = document.querySelector('.card-number');
             const cardExpireElement = document.querySelector('.card-expire');
             const cardNameElement = document.querySelector('.card-name');
 
-            // Écoutez les événements de saisie sur le numéro de carte de crédit
+            // Écoute les événements de saisie sur le numéro de carte de crédit
             creditCardNumberInput.addEventListener('input', function () {
-                // Obtenez la valeur du champ
+                // Obtene la valeur du champ
                 let value = this.value;
 
-                // Supprimez tous les espaces de la valeur
+                // Supprime tous les espaces de la valeur
                 value = value.replace(/\s/g, '');
 
-                // Limitez le nombre de caractères à 16
+                // Limite le nombre de caractères à 16
                 value = value.substr(0, 16);
 
-                // Ajoutez des espaces après chaque groupe de 4 chiffres
+                // Ajoute des espaces après chaque groupe de 4 chiffres
                 value = value.replace(/(\d{4})/g, '$1 ').trim();
 
-                // Mettez à jour la valeur du champ
+                // Met à jour la valeur du champ
                 this.value = value;
 
-                // Mettez à jour le numéro de carte sur la carte simulée
+                // Met à jour le numéro de carte sur la carte simulée
                 cardNumberElement.textContent = value ? value.padEnd(16, '*').replace(/(.{4})/, '$1 ') : '0000 0000 0000 0000';
             });
 
-            // Écoutez les événements de saisie sur la date d'expiration
+            // Écoute les événements de saisie sur la date d'expiration
             expirationDateInput.addEventListener('input', function () {
-                // Obtenez la valeur du champ
+                // Obtene la valeur du champ
                 let value = this.value;
 
-                // Supprimez tous les caractères non numériques de la valeur
+                // Supprime tous les caractères non numériques de la valeur
                 value = value.replace(/\D/g, '');
 
-                // Limitez le nombre de caractères à 6 (MM/YYYY)
+                // Limite le nombre de caractères à 6 (MM/YYYY)
                 value = value.substr(0, 6);
 
-                // Ajoutez le caractère "/" après les deux premiers chiffres
-                value = value.replace(/(\d{2})(\d{0,4})/, '$1/$2').trim();
+                // Ajoute le caractère "/" après les deux premiers chiffres
+                value = value.replace(/(\d{2})(\d{0,4})/, '$1 / $2').trim();
 
-                // Mettez à jour la valeur du champ
+                // Met à jour la valeur du champ
                 this.value = value;
 
-                // Mettez à jour la date d'expiration sur la carte simulée
+                // Met à jour la date d'expiration sur la carte simulée
                 cardExpireElement.textContent = 'Expire ' + (value ? value : '00/00');
             });
 
-            // Écoutez les événements de saisie sur le nom et prénom
+            // Écoute les événements de saisie sur le nom et prénom
             document.querySelector('input[name="getName"]').addEventListener('input', function () {
-                // Mettez à jour le nom sur la carte simulée
+                // Met à jour le nom sur la carte simulée
                 cardNameElement.textContent = 'M ' + (this.value ? this.value : 'John Doe');
             });
         });
@@ -302,7 +302,7 @@
             echo '<p class="card-number">0000 0000 0000 0000</p>';
             echo '<div class="arrow"></div>';
             echo '<p class="card-name">M John Doe</p>';
-            echo '<p class="card-expire">Expire 00/00</p>';
+            echo '<p class="card-expire">Expire 00 / 00</p>';
             echo '<p class="bank-name">Bank 1337</p>';
             echo '</div>';
             echo '</div>';
@@ -314,19 +314,19 @@
             echo '<label for="credit_card_number" required minlength="12" maxlength="12">Credit Card Number : </label></br>';
             echo '<input type="text" placeholder="XXXX XXXX XXXX XXXX" name="credit_card_number" required></br>';
             echo "<label for='expiration_date'>Date d'expiration : </label></br>";
-            echo '<input type="text" placeholder="MM/YYYY" name="expiration_date" required></br>';
+            echo '<input type="text" placeholder="MM / YYYY" name="expiration_date" required></br>';
             echo '<button type="submit" name="checkout" class="lienImportant">Valider</button>';
             echo '</form>';
             echo ' </div>';
             echo '</br></br></br>
-            <!-- Ajoutez un lien pour vider le panier -->
+            <!-- Ajoute un lien pour vider le panier -->
             <span><a href="vider_panier.php" class="lienImportant">Vider le panier</a></span>';
         } else {
             echo '<p>Le panier est vide.</p>';
         }
         ?>
 
-    <!-- Ajoutez un lien pour revenir à la page principale -->
+    <!-- Ajoute un lien pour revenir à la page principale -->
     <span><a href="index.php" class="lienImportant">Retour à la page principale</a></span>
 </body>
 </html>
