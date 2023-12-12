@@ -79,10 +79,9 @@
             document.body.appendChild(modal);
 
             // Test script pour rotation cd
-            document.querySelector('.modal-content img').addEventListener('onmouseover', function(){
-                document.querySelector('.modal-content img').style.transform="rotate(360000000deg)";
-                document.querySelector('.modal-content img').style.transition="transform 360000s";
-            });
+            /* document.querySelector('.modal-content img').addEventListener('onmouseover', function(){
+                document.querySelector('.modal-content img').style.setAttribute('style','transform:rotate(360000000deg);transition:transform 360000s');
+            }); */
         }
 
         function closeModal() {
