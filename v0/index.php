@@ -9,7 +9,7 @@
 </head>
 <body>
     <?php 
-    if(isset($_SESSION['admin']) || $_SESSION['admin'] == 'Activer Admin'){
+    if(isset($_SESSION['admin']) || $_SESSION['admin'] == false){
         echo '<a id="adminButton" onclick="toggleAdmin()" class="lienImportant">Activer ADMIN</a>';
     }else{
         echo '<a id="adminButton" onclick="toggleAdmin()" class="lienImportant">Desactiver ADMIN</a>';

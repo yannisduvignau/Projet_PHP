@@ -2,7 +2,7 @@
 session_start();
 
 // Vérifiez l'authentification (ajoutez vos vérifications ici)
-/* if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
+/* if (!isset($_SESSION['admin']) || $_SESSION['admin'] !== true) {
     header('Location: index.php');
     exit();
 } */
@@ -47,8 +47,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- Formulaire de suppression de CD -->
     <h2>Delete CD</h2>
     <form method="post" action="backoffice.php">
-        <label for="cd_to_delete">CD to delete (XML format):</label>
-        <textarea name="cd_to_delete" rows="4" cols="50" required></textarea>
+        <label for="cds_to_delete">Select CD to delete:</label>
+        <select name="cd_to_delete" required>
+            <?php
+            // Charger la liste des CD actuels depuis le fichier XML
+            $cds = simplexml_load_file('xml/cds.xml');
+
+            // Afficher chaque CD dans la liste déroulante
+            foreach ($cds->cd as $cd) {
+                echo "<option value='" . htmlspecialchars($cd->asXML()) . "'>" . htmlspecialchars($cd->title) . "</option>";
+            }
+            ?>
+        </select>
         <button type="submit" name="delete_cd">Delete CD</button>
     </form>
 
