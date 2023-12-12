@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<logs>
+    <user>
+        <id>1</id>
+        <pwd>Booba</pwd>
+        <nom>Rap</nom>
+        <pseudo>Ultra</pseudo>
+        <admin>1</admin>
+    </user>
+</logs>
