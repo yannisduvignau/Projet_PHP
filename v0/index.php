@@ -8,14 +8,7 @@
     <link href="css/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <?php 
-    if(isset($_SESSION['admin']) || $_SESSION['admin'] == 'Activer Admin'){
-        echo '<a id="adminButton" onclick="toggleAdmin()" class="lienImportant">Activer ADMIN</a>';
-    }else{
-        echo '<a id="adminButton" onclick="toggleAdmin()" class="lienImportant">Desactiver ADMIN</a>';
-    }
-    ?>
-    
+    <a id="adminButton" href="./backoffice.php" class="lienImportant" style="visibility:hidden;position:absolute;top:2%;">Aller au BackOffice</a>
     <img style="position:absolute;top:2%;right:5%;width:80px;height:auto;" src="images/logoCDIcon.png" alt="Logo"></img>
     <h1>CD Store</h1>
     <p>=> Un site web de vente de CD (oui, oui, ça existe encore !) en ligne</p>
@@ -119,6 +112,36 @@
             };
             xhr.send();
         }
+    </script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/egg.js/1.0/egg.min.js"></script>
+    <script type="text/javascript">
+    var adminBool = false;
+    
+    var egg1 = new Egg();
+    egg1.addCode("a,d,m,i,n", function() {
+        console.log("AdminActif");
+        alert('!!! Vous êtes passés en mode ADMIN !!!');
+        document.querySelector("#adminButton").style.visibility = 'visible';
+        adminBool=true;
+    }, "AdminMode");
+
+    egg1.listen();
+
+    var egg2 = new Egg();
+    egg2.addCode("q,u,i,t", function() {
+        if (adminBool) {
+            console.log("AdminInactif");
+            alert('Vous n`êtes plus en mode ADMIN');
+            document.querySelector("#adminButton").style.visibility = 'hidden';
+            adminBool=false;
+        }
+        else {
+            console.log("AdminDéjàInactif");
+        }
+    }, "NotAdminMode");
+
+    egg2.listen();
     </script>
 </body>
 </html>
