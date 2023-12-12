@@ -280,7 +280,7 @@
                 if (is_array($item)) {
                     // Affichage contenu panier
                     echo '<li><img src="'.$item['image'].'" alt="titre" style="max-width:100px;">';
-                    echo ' Titre : ' . $item['titre'] . ' - Prix : $' . $item['prix'] . ' - Quantité : ' . $item['quantite'] . '</br><span style="diplay:inline-block;">Sous-total : $' . $item['prix']*$item['quantite'] . '</span></li>';
+                    echo '<span style="margin-left:5%;"><b><i>Titre</i> :</b> ' . $item['titre'] . '&nbsp;&nbsp;&nbsp - <b>Prix :</b> $' . $item['prix'] . ' - <i>Quantité</i> : ' . $item['quantite'] . '</span><span style="margin-left:25%;"> <b>Sous-total :</b> $' . $item['prix']*$item['quantite'] . '</span></li>';
                     $cptCds += $item['quantite'];
                     $prixTotal += $item['prix']*$item['quantite'];
                 } else {
