@@ -132,8 +132,8 @@
     egg2.addCode("q,u,i,t", function() {
         if (adminBool) {
             console.log("AdminInactif");
-            alert('Vous n`êtes plus en mode ADMIN');
             document.querySelector("#adminButton").style.visibility = 'hidden';
+            alert('Vous n`êtes plus en mode ADMIN');
             adminBool=false;
         }
         else {
