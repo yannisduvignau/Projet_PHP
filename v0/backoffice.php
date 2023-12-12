@@ -2,10 +2,10 @@
 session_start();
 
 // Vérifiez l'authentification (ajoutez vos vérifications ici)
-if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
+/* if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
     header('Location: index.php');
     exit();
-}
+} */
 
 // Traitez les opérations de back-office (ajout/suppression de CD)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

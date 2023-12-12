@@ -8,6 +8,14 @@
     <link href="css/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+    <?php 
+    if(isset($_SESSION['admin']) || $_SESSION['admin'] == 'Activer Admin'){
+        echo '<a id="adminButton" onclick="toggleAdmin()" class="lienImportant">Activer ADMIN</a>';
+    }else{
+        echo '<a id="adminButton" onclick="toggleAdmin()" class="lienImportant">Desactiver ADMIN</a>';
+    }
+    ?>
+    
     <img style="position:absolute;top:2%;right:5%;width:80px;height:auto;" src="images/logoCDIcon.png" alt="Logo"></img>
     <h1>CD Store</h1>
     <p>=> Un site web de vente de CD (oui, oui, ça existe encore !) en ligne</p>
@@ -98,6 +106,19 @@
             }
         }
 
+        function toggleAdmin() {
+            // Faire une requête AJAX pour mettre à jour le statut administrateur côté serveur
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "updateAdminStatus.php", true);
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    // Mettre à jour le bouton et éventuellement effectuer d'autres actions côté client
+                    document.getElementById("adminButton").innerHTML = xhr.responseText;
+                }
+            };
+            xhr.send();
+        }
     </script>
 </body>
 </html>
