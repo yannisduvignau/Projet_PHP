@@ -79,10 +79,15 @@
             // Ajoute le modal au document
             document.body.appendChild(modal);
 
-            // Test script pour rotation cd
-            /* document.querySelector('.modal-content img').addEventListener('onmouseover', function(){
-                document.querySelector('.modal-content img').style.setAttribute('style','transform:rotate(360000000deg);transition:transform 360000s');
-            }); */
+            // Rotation et BorderRadius
+            document.querySelector('.modal-content img').addEventListener('mouseenter', function() {
+                this.style.animationPlayState = 'running';
+                this.style.borderRadius = '100%'; // Changer la valeur selon vos besoins
+            });
+
+            document.querySelector('.modal-content img').addEventListener('mouseleave', function() {
+                this.style.animationPlayState = 'paused';
+            });
         }
 
         function closeModal() {
@@ -91,6 +96,7 @@
                 modal.remove();
             }
         }
+
     </script>
 </body>
 </html>
