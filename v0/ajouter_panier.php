@@ -7,6 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $produit_titre = $_POST['produit_titre'];
         $produit_prix = $_POST['produit_prix'];
         $produit_qte = $_POST['produit_qte'];
+        $produit_image = $_POST['produit_image'];
 
         // Initialise le panier s'il n'existe pas encore
         if (!isset($_SESSION['panier']) || !is_array($_SESSION['panier'])) {
@@ -30,7 +31,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'id' => $produit_id,
                 'titre' => $produit_titre,
                 'prix' => $produit_prix,
-                'quantite' => $produit_qte
+                'quantite' => $produit_qte,
+                'image' => $produit_image
             ];
             $_SESSION['panier'][] = $produit;
         }
