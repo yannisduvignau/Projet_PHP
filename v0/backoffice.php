@@ -1,5 +1,13 @@
+<!--
+/**
+    Auteurs : Clement Mourgue et Yannis Duvignau
+    Date :  du xx/xx au xx/xx
+    Description : Page d'accueil du site de vente de CD en ligne
+*/
+-->
+
 <?php
-session_start();
+
 // Vérifiez l'authentification (ajoutez vos vérifications ici)
 /* if (!isset($_SESSION['admin']) || $_SESSION['admin'] !== true) {
     header('Location: index.php');
@@ -63,19 +71,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label for="genre">Genre:</label>
         <input type="text" name="genre" required>
         <br>
-        <label for="titre">Title:</label>
+        <label for="titre">Titre:</label>
         <input type="text" name="titre" required>
         <br>
-        <label for="artiste">Artist:</label>
+        <label for="artiste">Artiste:</label>
         <input type="text" name="artiste" required>
         <br>
-        <label for="prixUnitaire">Unit Price:</label>
+        <label for="prixUnitaire">Prix Unitaire:</label>
         <input type="text" name="prixUnitaire" required>
         <br>
         <label for="image">Image:</label>
         <input type="text" name="image" required>
         <br>
-        <button type="submit" name="add_cd">Add CD</button>
+        <button type="submit" name="add_cd">Ajouter un CD</button>
     </form>
 
     <!-- Formulaire de suppression de CD -->
@@ -89,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Afficher chaque CD dans la liste déroulante
             foreach ($cds->cd as $cd) {
-                echo "<option value='" . $cd->id . "'>" . htmlspecialchars($cd->titre) . "</option>";
+                echo "<option value='" . $cd->id . "'>" . htmlspecialchars($cd->titre) . " " .htmlspecialchars($cd->artiste) . "</option>";
             }
             ?>
         </select>

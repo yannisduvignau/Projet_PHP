@@ -1,3 +1,11 @@
+<!--
+/**
+    Auteurs : Clement Mourgue et Yannis Duvignau
+    Date :  du xx/xx au xx/xx
+    Description : Page d'accueil du site de vente de CD en ligne
+*/
+-->
+
 <?xml version="1.0" encoding="UTF-8"?>
 <cds>
     <cd>
@@ -121,4 +129,4 @@
         <image>images/pochette15.jpg</image>
     </cd>
     <!-- Ajoutez d'autres CDs ici -->
-<cd><id>16</id><genre>Rap/Electro</genre><titre>Terminus</titre><artiste>Gazo</artiste><prixUnitaire>15</prixUnitaire><image>.</image></cd><cd><id>16</id><genre>Rap/Electro</genre><titre>Terminus</titre><artiste>Gazo</artiste><prixUnitaire>15</prixUnitaire><image>.</image></cd></cds>
+</cds>

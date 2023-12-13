@@ -1,3 +1,11 @@
+<!--
+/**
+    Auteurs : Clement Mourgue et Yannis Duvignau
+    Date :  du xx/xx au xx/xx
+    Description : Page d'accueil du site de vente de CD en ligne
+*/
+-->
+
 <?php
 
 // Vérifier si la variable de session 'admin' existe
