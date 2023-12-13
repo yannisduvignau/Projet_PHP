@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;500&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    color: black;
+    box-sizing: border-box;
+}
+
+.hero{
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url(../images/fond.jpg);
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+}
+
+.container{
+    width: 900px;
+    height: 500px;
+    position: relative;
+    margin: 10% auto;
+    padding: 5px;
+    background: white;
+    border-radius: 15px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}
+
+.button-return{
+    position:absolute;
+    padding: 10px 30px;
+    background: linear-gradient(to right, #000000, #1c1c1c66);
+    border-radius: 30px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border: solid 2px white;
+    margin-left: 70px;
+    font-size: 20px;
+    margin-top: 50px;
+}
+
+table{
+    width: 100%;
+    border-collapse:collapse ;
+    color: #404040;
+}
+
+th{
+    font-size: 16px;
+    border-bottom: 3px solid #ffcb61;
+    padding: 5px 20px;
+    font-weight: 500;
+}
+
+td{
+    text-align: center;
+    font-weight: 400;
+    padding: 5px 20px;
+    font-size: 14px;
+}
+
+img{
+    height: 25px;
+}
+tr:nth-child(2n){
+    background-color: #f6f8f8;
+
+}
+tr:nth-child(2n) td{
+    border-bottom: 1px solid #e0e0e0;
+    border-top: 1px solid #e0e0e0;
+}
+
+
+
+.form {
+    width: 400px;
+    margin: 10% auto;
+    background: white;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    background-color: #f6f8f8;
+    position: relative;
+    padding: 25px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    border-radius: 6px;
+}
+.form form{
+    display: flex;
+    width: 350px;
+    flex-direction: column;
+}
+h2{
+    margin: 10px 0;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+.erreur_message{
+    color: red;
+    font-size: 12px;
+}
+label{
+    margin-top: 5px;
+    text-transform: uppercase;
+}
+input{
+    padding: 5px;
+    border: 1px solid #999;
+    outline: 0;
+    margin-top: 2px;
+}
+input:focus{
+    border: 1px solid #ffcb61;
+}
+input[type="submit"]{
+    margin-top: 25px;
+    background-color: #2bc48a;
+    border: 1px solid #2bc48a;
+    cursor: pointer;
+    color: #fff;
+    text-transform: uppercase;
+}
+
