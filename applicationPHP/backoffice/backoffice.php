@@ -10,8 +10,9 @@
 <body>
     <div class="hero">
         <a href="../index.php" class="button-return">Return</a>
-        <div class="container">
-            <table>
+        <a href="add.php"><img src="../images/add.png" alt="Plus_to_add"></a>
+        <div class="container"style="border: 3px solid black;">
+            <table >
                 <tr id="items">
                     <th>Id</th>
                     <th>Titre</th>
