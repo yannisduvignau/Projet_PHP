@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 // Vérifiez l'authentification (ajoutez vos vérifications ici)
 /* if (!isset($_SESSION['admin']) || $_SESSION['admin'] !== true) {
     header('Location: index.php');
@@ -10,22 +9,41 @@ session_start();
 // Traitez les opérations de back-office (ajout/suppression de CD)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['add_cd'])) {
-        $new_cd = simplexml_load_string($_POST['new_cd']);
         $cds = simplexml_load_file('xml/cds.xml');
-        $cds->addChild('cd', $new_cd->asXML());
+        
+        // Création d'un nouvel élément CD
+        $new_cd = $cds->addChild('cd');
+        
+        // Ajout des attributs du CD
+        $new_cd->addChild('id', $_POST['id']);
+        $new_cd->addChild('genre', $_POST['genre']);
+        $new_cd->addChild('titre', $_POST['titre']);
+        $new_cd->addChild('artiste', $_POST['artiste']);
+        $new_cd->addChild('prixUnitaire', $_POST['prixUnitaire']);
+        $new_cd->addChild('image', $_POST['image']);
+
         $cds->asXML('xml/cds.xml');
+        echo "CD added successfully!";
     }
 
     if (isset($_POST['delete_cd'])) {
-        $cd_to_delete = simplexml_load_string($_POST['cd_to_delete']);
-        $xpath = $cd_to_delete->xpath('..');
-        unset($xpath[0][0]);
-        $cd_to_delete->asXML('xml/cds.xml');
+        $cd_to_delete = $_POST['cd_to_delete'];
+        $cds = simplexml_load_file('xml/cds.xml');
+    
+        // Recherchez l'élément à supprimer parmi les éléments existants et supprimez-le
+        foreach ($cds->cd as $cd) {
+            if ($cd->id == $cd_to_delete) {
+                $dom = dom_import_simplexml($cd);
+                $dom->parentNode->removeChild($dom);
+                $cds->asXML('xml/cds.xml');
+                echo "CD deleted successfully!";
+                break; // Arrêtez la boucle après avoir trouvé et supprimé l'élément
+            }
+        }
     }
 }
-
-// Affichez le formulaire d'ajout de CD
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,15 +57,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- Formulaire d'ajout de CD -->
     <h2>Add CD</h2>
     <form method="post" action="backoffice.php">
-        <label for="new_cd">New CD (XML format):</label>
-        <textarea name="new_cd" rows="4" cols="50" required></textarea>
+        <label for="id">ID:</label>
+        <input type="text" name="id" required>
+        <br>
+        <label for="genre">Genre:</label>
+        <input type="text" name="genre" required>
+        <br>
+        <label for="titre">Title:</label>
+        <input type="text" name="titre" required>
+        <br>
+        <label for="artiste">Artist:</label>
+        <input type="text" name="artiste" required>
+        <br>
+        <label for="prixUnitaire">Unit Price:</label>
+        <input type="text" name="prixUnitaire" required>
+        <br>
+        <label for="image">Image:</label>
+        <input type="text" name="image" required>
+        <br>
         <button type="submit" name="add_cd">Add CD</button>
     </form>
 
     <!-- Formulaire de suppression de CD -->
     <h2>Delete CD</h2>
     <form method="post" action="backoffice.php">
-        <label for="cds_to_delete">Select CD to delete:</label>
+        <label for="cd_to_delete">Select CD to delete:</label>
         <select name="cd_to_delete" required>
             <?php
             // Charger la liste des CD actuels depuis le fichier XML
@@ -55,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Afficher chaque CD dans la liste déroulante
             foreach ($cds->cd as $cd) {
-                echo "<option value='" . htmlspecialchars($cd->asXML()) . "'>" . htmlspecialchars($cd->title) . "</option>";
+                echo "<option value='" . $cd->id . "'>" . htmlspecialchars($cd->titre) . "</option>";
             }
             ?>
         </select>

@@ -121,4 +121,4 @@
         <image>images/pochette15.jpg</image>
     </cd>
     <!-- Ajoutez d'autres CDs ici -->
-</cds>
+<cd><id>16</id><genre>Rap/Electro</genre><titre>Terminus</titre><artiste>Gazo</artiste><prixUnitaire>15</prixUnitaire><image>.</image></cd><cd><id>16</id><genre>Rap/Electro</genre><titre>Terminus</titre><artiste>Gazo</artiste><prixUnitaire>15</prixUnitaire><image>.</image></cd></cds>
