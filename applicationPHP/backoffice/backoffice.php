@@ -29,7 +29,7 @@
                 //inclure la base donnée
                 include_once "../gestionBD/database.php";
                 //requete pour afficher la liste des utilisateurs
-                $req = mysqli_query($connexion, "SELECT * FROM cd");
+                $req = mysqli_query($connexion, "SELECT * FROM CD");
                 if(mysqli_num_rows($req)==0){
                     //s'il n'y as pas de cd d'inscrit
                     echo "Il n'y as pas de cd d'inscrit";
