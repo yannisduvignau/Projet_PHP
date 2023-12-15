@@ -38,7 +38,7 @@
     ?>
     
     <div class="hero">
-        <a href="backoffice.php" class="button-return">Return</a>
+        <a href="backoffice.php" class="lienImportant">Return</a>
         <div class="form">
             <h2>Modifier le cd <?=$row['titre']?> de <?=$row['artiste']?></h2>
             <p class="erreur_message">

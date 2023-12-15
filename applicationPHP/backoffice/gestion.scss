@@ -19,26 +19,28 @@
     height: 500px;
     position: relative;
     margin: 10% auto;
-    padding: 5px;
+    padding: 10px;
     background: white;
     border-radius: 15px;
     overflow-y: auto;
     scroll-behavior: smooth;
 }
 
-.button-return{
-    position:absolute;
-    padding: 10px 30px;
-    background: linear-gradient(to right, #000000, #1c1c1c66);
-    border-radius: 30px;
+.lienImportant {
+    position: absolute;
+    margin: 2%;
+    color: whitesmoke;
     text-decoration: none;
-    color: white;
-    font-weight: bold;
+    transition-duration: 0.2s;
+    background-color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    border-radius: 10px;
     cursor: pointer;
-    border: solid 2px white;
-    margin-left: 70px;
-    font-size: 20px;
-    margin-top: 50px;
+    box-shadow: 5px 5px 5px #33333350;
+}
+
+.lienImportant:hover{
+    background-color: #7a00b3;
 }
 
 table{

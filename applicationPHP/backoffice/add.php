@@ -32,7 +32,7 @@
     ?>
     
     <div class="hero">
-        <a href="backoffice.php" class="button-return">Return</a>
+        <a href="backoffice.php" class="lienImportant">Return</a>
         <div class="form">
             <h2>Ajouter un cd</h2>
             <p class="erreur_message">
