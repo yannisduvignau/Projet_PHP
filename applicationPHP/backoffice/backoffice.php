@@ -9,8 +9,10 @@
 </head>
 <body>
     <div class="hero">
-        <a href="../index.php" class="button-return">Return</a>
-        <a href="add.php"><img src="../images/add.png" alt="Plus_to_add"></a>
+        <a href="../index.php" class="lienImportant">Return</a>
+        <a href="add.php" style="position:absolute;right:9%;top:2.5%;color:#00A233;font-size:30px;font-weight:bold;text-decoration:none;">Ajoute un CD</a>
+        <a href="add.php" style="position:absolute;right:2%;top:2%;"><img src="../images/add.png" alt="Plus_to_add" style="height:50px;"></a>
+        <a style="position:relative;top:13%;left:15%;color:#333;font-size:30px;font-weight:bold;">BIENVENUE dans le Backoffice du CD Store</a>
         <div class="container"style="border: 3px solid black;">
             <table >
                 <tr id="items">
@@ -19,8 +21,8 @@
                     <th>Genre</th>
                     <th>Artiste</th>
                     <th>Prix Unitaire</th>
-                    <th>Modify</th>
-                    <th>Delete</th>
+                    <th>Modifier</th>
+                    <th>Supprimer</th>
                 </tr>
 
                 <?php
