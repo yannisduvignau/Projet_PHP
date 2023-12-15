@@ -1,13 +1,9 @@
-<!--
-/**
+<?php session_start();
+/*
     Auteurs : Clement Mourgue et Yannis Duvignau
     Date :  du xx/xx au xx/xx
     Description : Page d'accueil du site de vente de CD en ligne
 */
--->
-
-<?php
-session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['ajouter_panier'])) {

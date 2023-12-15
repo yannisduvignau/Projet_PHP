@@ -1,4 +1,5 @@
-<!--
+<?php session_start(); ?>
+<!-- Nécesssaire à cet emplacement pour ne pas provoquer d'erreur
 /**
     Auteurs : Clement Mourgue et Yannis Duvignau
     Date :  du xx/xx au xx/xx
@@ -6,7 +7,7 @@
 */
 -->
 
-<?php
+<!-- en php
 /*$is_admin = false;
 session_start();
 
@@ -24,9 +25,7 @@ if (isset($_SESSION["user_id"])){
     }
 }*/
 
-?>
-
-<?php session_start(); ?>
+-->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -55,9 +54,15 @@ if (isset($_SESSION["user_id"])){
 
         <?php
         //inclure la base donnée
-        include_once "gestionBD/database.php";
+        //include_once "gestionBD/database.php"; // déjà inclus dans le peuplement
+        // Constituer la base de données
+        include_once "gestionBD/creation_et_peuplement.php";
+        // Récupération des variables
+        $nomTableCds = $res[0];
+        $nomTableUser = $res[1];
+        $connexion = $res[2];
         //requete pour afficher la liste des utilisateurs
-        $req = mysqli_query($connexion, "SELECT * FROM cd");
+        $req = mysqli_query($connexion, "SELECT * FROM $nomTableCds");
         if(mysqli_num_rows($req)==0){
             //s'il n'y as pas de cd d'inscrit
             echo "Il n'y as pas de cd d'inscrit";

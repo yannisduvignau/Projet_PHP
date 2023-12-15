@@ -15,8 +15,11 @@ include_once "database.php";
 ///          Création des tables          ///
 /////////////////////////////////////////////
 
+$nomTableUser = "Utilisateur";
+$nomTableCds = "CD";
+
 // Requête de création de la table utilisateur
-$sql = "CREATE TABLE IF NOT EXISTS Utilisateur (
+$sql = "CREATE TABLE IF NOT EXISTS $nomTableUser (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(50) NOT NULL,
     pseudo VARCHAR(50) NOT NULL,
@@ -25,14 +28,14 @@ $sql = "CREATE TABLE IF NOT EXISTS Utilisateur (
 )";
 
 if ($connexion->query($sql) === TRUE) {
-    echo "Table Utilisateur créée avec succès\n";
+    echo '<script type="text/javascript">console.log("Table Utilisateur créée avec succès ou déjà existante");</script>';
 } else {
-    echo "Erreur lors de la création de la table\n";
+    echo '<script type="text/javascript">console.log("Erreur lors de la création de la table");</script>';
 }
 
 
 // Requête de création de la table CD
-$sql = "CREATE TABLE IF NOT EXISTS CD (
+$sql = "CREATE TABLE IF NOT EXISTS $nomTableCds (
     id INT AUTO_INCREMENT PRIMARY KEY,
     titre VARCHAR(50) NOT NULL,
     genre VARCHAR(50) NOT NULL,
@@ -42,9 +45,9 @@ $sql = "CREATE TABLE IF NOT EXISTS CD (
 )";
 
 if ($connexion->query($sql) === TRUE) {
-    echo "Table CD créée avec succès\n";
+    echo '<script type="text/javascript">console.log("Table Utilisateur créée avec succès ou déjà existante");</script>';
 } else {
-    echo "Erreur lors de la création de la table\n";
+    echo '<script type="text/javascript">console.log("Erreur lors de la création de la table");</script>';
 }
 
 //////////////////////////////////////////////
@@ -57,27 +60,26 @@ if ($connexion->query($sql) === TRUE) {
 /////////////////////////////
 
 // Nom de la table à vérifier
-$nomTable = "utilisateur";
 
 // Requête pour compter le nombre de lignes dans la table
-$resultat = $connexion->query("SELECT COUNT(*) as total FROM $nomTable");
-$row = $resultat->fetch_assoc();
+$resultat = $connexion->query("SELECT COUNT(*) AS total FROM $nomTableUser");
+$row = mysqli_fetch_assoc($resultat);
 $totalLignes = $row['total'];
 
 // Vérifier si la table est vide
 if ($totalLignes == 0) {
     // La table est vide
     // Requête d'insertion de données dans la table utilisateur
-    $sql = "INSERT INTO utilisateur (nom, pseudo, pwd,admin)
+    $sql = "INSERT INTO $nomTableUser (nom, pseudo, pwd,admin)
     VALUES ('Doe', 'John_Doe', 'booba',1)";
 
     if ($connexion->query($sql) === TRUE) {
-        echo "Données ajoutées avec succès";
+        echo '<script type="text/javascript">console.log("Données ajoutées avec succès");</script>';
     } else {
-        echo "Erreur lors de l'ajout des données  ";
+        echo '<script type="text/javascript">console.log("Erreur lors de l`ajout des données");</script';
     }
 }else{
-    echo "La table n'est pas vide";
+    echo '<script type="text/javascript">console.log("La table n`est pas vide");</script>';
 }
 
 /////////////////////////////
@@ -85,18 +87,18 @@ if ($totalLignes == 0) {
 /////////////////////////////
 
 // Nom de la table à vérifier
-$nomTable = "cd";
+$nomTable = "CD";
 
 // Requête pour compter le nombre de lignes dans la table
-$resultat = $connexion->query("SELECT COUNT(*) as total FROM $nomTable");
-$row = $resultat->fetch_assoc();
+$resultat = $connexion->query("SELECT COUNT(*) as total FROM $nomTableCds");
+$row = mysqli_fetch_assoc($resultat);
 $totalLignes = $row['total'];
 
 // Vérifier si la table est vide
 if ($totalLignes == 0) {
     // La table est vide
     // Requête d'insertion de données dans la table cd
-    $sql = "INSERT INTO cd (titre, genre, artiste,prixUnitaire,image) VALUES
+    $sql = "INSERT INTO $nomTableCds (titre, genre, artiste,prixUnitaire,image) VALUES
     ('Ultra', 'Rap', 'Booba',9.99,'images/pochette1.jpg'),
     ('Monument', 'Rap', 'Alkpote',10.99,'images/pochette2.jpg'),
     ('Arretez-le', 'Rap', '1plike140',11.99,'images/pochette3.jpg'),
@@ -113,15 +115,18 @@ if ($totalLignes == 0) {
     ('Memoria', 'Rap', 'Jazzy Bazz',12.99,'images/pochette14.png'),
     ('Masque Blanc', 'Rap', 'S.Pri Noir',9.99,'images/pochette15.jpg')";
 
-    if ($connexion->query($sql) === TRUE) {
-        echo "Données ajoutées avec succès";
-    } else {
-        echo "Erreur lors de l'ajout des données";
-    }
+if ($connexion->query($sql) === TRUE) {
+    echo '<script type="text/javascript">console.log("Données ajoutées avec succès");</script>';
+} else {
+    echo '<script type="text/javascript">console.log("Erreur lors de l`ajout des données");</script';
+}
 }else{
-    echo "La table n'est pas vide";
+echo '<script type="text/javascript">console.log("La table n`est pas vide");</script>';
 }
 
 // Fermer la connexion
-$connexion->close();
+//$connexion->close();
+$res = [$nomTableCds,$nomTableUser,$connexion];
+
+return $res;
 ?>
