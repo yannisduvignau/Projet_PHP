@@ -13,15 +13,18 @@
     //connexion
     include_once "../gestionBD/database.php";
 
+    $nomTableCds = "CD";
+
     if(isset($_POST['button'])){
         //extraction des infos envoyé par POST
         extract($_POST);
         //vérifier que les champs ont été remplis
         if(isset($titre) && isset($genre) && isset($artiste) && isset($prixUnitaire) && isset($image)){
             //requte de modif
-            $req = mysqli_query($connexion, "INSERT INTO cd (titre, genre, artiste,prixUnitaire,image) VALUES('$titre', '$genre', '$artiste',$prixUnitaire,'$image')");
+            $req = mysqli_query($connexion, "INSERT INTO $nomTableCds (titre, genre, artiste,prixUnitaire,image) VALUES('$titre', '$genre', '$artiste',$prixUnitaire,'$image')");
             if($req){
-                header("Location: backoffice.php");
+                //header("Location: backoffice.php");
+                echo '<script type="text/javascript">window.location = "./backoffice.php";</script>';
             }else {
                 $message = "CD non ajouté";
             }

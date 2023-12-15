@@ -12,10 +12,12 @@
 
     //connexion
     include_once "../gestionBD/database.php";
+
+    $nomTableCds = "CD";
     //recup l'id
     $id = $_GET['id'];
     //requete d'affichage
-    $req = mysqli_query($connexion, "SELECT * FROM cd WHERE id = $id ");
+    $req = mysqli_query($connexion, "SELECT * FROM $nomTableCds WHERE id = $id ");
     $row = mysqli_fetch_assoc($req);
 
 
@@ -25,11 +27,12 @@
         //vérifier que les champs ont été remplis
         if(isset($titre) && isset($genre) && isset($artiste) && isset($prixUnitaire)){
             //requte de modif
-            $req = mysqli_query($connexion, "UPDATE cd SET titre = '$titre', genre = '$genre', artiste = '$artiste', prixUnitaire = '$prixUnitaire' WHERE id = '$id' ");
+            $req = mysqli_query($connexion, "UPDATE $nomTableCds SET titre = '$titre', genre = '$genre', artiste = '$artiste', prixUnitaire = '$prixUnitaire' WHERE id = '$id' ");
             if($req){
-                header("Location: backoffice.php");
+                //header("Location: backoffice.php");
+                echo '<script type="text/javascript">window.location = "./backoffice.php";</script>';
             }else {
-                $message = "Employé non modifié";
+                $message = "Cd non modifié";
             }
         }else {
             $message = "Veuillez remplir tous les champs !";
