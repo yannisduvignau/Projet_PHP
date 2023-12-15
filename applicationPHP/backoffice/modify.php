@@ -27,7 +27,7 @@
         //vérifier que les champs ont été remplis
         if(isset($titre) && isset($genre) && isset($artiste) && isset($prixUnitaire)){
             //requte de modif
-            $req = mysqli_query($connexion, "UPDATE $nomTableCds SET titre = '$titre', genre = '$genre', artiste = '$artiste', prixUnitaire = '$prixUnitaire' WHERE id = '$id' ");
+            $req = mysqli_query($connexion, "UPDATE $nomTableCds SET titre = '$titre', genre = '$genre', artiste = '$artiste', prixUnitaire = '$prixUnitaire', image ='$image' WHERE id = '$id' ");
             if($req){
                 //header("Location: backoffice.php");
                 echo '<script type="text/javascript">window.location = "./backoffice.php";</script>';
@@ -60,6 +60,8 @@
                 <input type="text" name="artiste" value="<?=$row['artiste']?>">
                 <label>Prix Unitaire</label>
                 <input type="text" name="prixUnitaire" value="<?=$row['prixUnitaire']?>">
+                <label>Chemin image</label>
+                <input type="text" name="image" value="<?=$row['image']?>">
                 <input type="submit" value="Modifier" name="button">
             </form>
         </div>
