@@ -27,7 +27,7 @@ if (isset($_POST['login']) && isset($_POST['pwd'])) {
     $sql = "SELECT * FROM $nomTableUser WHERE nom = '$idLogin' AND pwd = '$pwdLogin'";
     $result = mysqli_query($connexion, $sql);
 
-    if ($row = mysqli_fetch_assoc($result)) {
+    if ($row = mysqli_fetch_assoc($result)) { // Si présent dans la bd
         // Enregistrement dans la session
         $_SESSION['login'] = $idLogin;
         $_SESSION['admin'] = $row['admin'];
@@ -39,12 +39,16 @@ if (isset($_POST['login']) && isset($_POST['pwd'])) {
         //echo '<script>window.location="../index.php";</script>';
         echo '<meta http-equiv="refresh" content="0;URL=../index.php">';
     }
-    else
+    else // Sinon on propose l'inscription
     {
         // Non présent dans les utilisateurs
         echo '<body onLoad="alert(\'Membre non reconnu...\')">';
-        // puis on le redirige vers la page d'accueil
-        echo '<meta http-equiv="refresh" content="0;URL=pageInscription.php">';
+        // puis on le redirige vers la page d'inscription avec les infos nécessaires
+        echo '
+        <form action="pageInscription.php" method="post" style="visibility:hidden;">
+            <input type="text" name="login" value="'.$idLogin.'"></form>';
+        echo '<script>document.querySelector("form").submit();</script>';
+        //echo '<meta http-equiv="refresh" content="0;URL=pageInscription.php">';
     }
 }
 else

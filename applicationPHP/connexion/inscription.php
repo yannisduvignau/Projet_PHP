@@ -46,23 +46,31 @@ if (isset($_POST['login']) && isset($_POST['pwd']) && isset($_POST['pseudo']) &&
 
         if ($connexion->query($sql) === TRUE) {
             echo '<script type="text/javascript">console.log("Données ajoutées avec succès");</script>
-            <p>Données ajoutées avec succès</p>';
+            <script>alert("Données ajoutées avec succès");</script>';
         } else {
             echo '<script type="text/javascript">console.log("Erreur lors de l`ajout des données. Attention le pseudo doit être unique");</script>
-            <p>Erreur lors de l`ajout des données. Attention le pseudo doit être unique</p>';
+            <script>alert("Erreur lors de l`ajout des données. Attention le pseudo doit être unique");</script>';
         }
     }else{
         echo '<script type="text/javascript">console.log("Profil déjà présent");</script>';
     }
 
-    echo '
+    /* echo '
     <form action="login.php" method="post" style="visibility:hidden;">
         <input type="text" name="login" value="'.$idLogin.'">
         <input type="password" name="pwd" value="'.$pwdLogin.'">
         <input type="text" name="pseudo" value="'.$pseudo.'">
         <input type="number" name="admin" value="'.$isAdmin.'">
         <input type="submit" value="Continuer" class="lienImportant" style="visibility:visible;">
+    </form>'; */
+    echo '
+    <form action="login.php" method="post" style="visibility:hidden;">
+        <input type="text" name="login" value="'.$idLogin.'">
+        <input type="password" name="pwd" value="'.$pwdLogin.'">
+        <input type="text" name="pseudo" value="'.$pseudo.'">
+        <input type="number" name="admin" value="'.$isAdmin.'">
     </form>';
+    echo '<script>document.querySelector("form").submit();</script>';
 }
 else
 {

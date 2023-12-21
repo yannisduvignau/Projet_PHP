@@ -44,7 +44,12 @@
     <br/><br/><br/><br/>
     <form action="inscription.php" method="post">
         Votre login : 
-        <input type="text" name="login" required>
+        <?php if(isset($_POST['login'])){
+            echo '<input type="text" name="login" value="'.$_POST['login'].'" required>';
+        }
+        else {
+            echo '<input type="text" name="login" required>';
+        } ?>
         <br/> <br/>
         Votre mot de passe : 
         <input type="password" name="pwd" required>

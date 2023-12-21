@@ -26,14 +26,14 @@
         //extraction des infos envoyé par POST
         extract($_POST);
         //vérifier que les champs ont été remplis
-        if(isset($titre) && isset($genre) && isset($artiste) && isset($prixUnitaire)){
+        if(isset($nom) && isset($pwd) && isset($pseudo) && isset($admin)){
             //requte de modif
-            $req = mysqli_query($connexion, "UPDATE $nomTableCds SET titre = '$titre', genre = '$genre', artiste = '$artiste', prixUnitaire = '$prixUnitaire', image ='$image' WHERE id = '$id' ");
+            $req = mysqli_query($connexion, "UPDATE $nomTableUser SET nom = '$nom', pwd = '$pwd', pseudo = '$pseudo' WHERE id = $id ");
             if($req){
                 //header("Location: backofficeCds.php");
-                echo '<script type="text/javascript">window.location = "./backofficeCds.php";</script>';
+                echo '<script type="text/javascript">window.location = "./backofficeUsers.php";</script>';
             }else {
-                $message = "Cd non modifié";
+                $message = "User non modifié";
             }
         }else {
             $message = "Veuillez remplir tous les champs !";
@@ -44,7 +44,7 @@
     <div class="hero">
         <a href="backofficeCds.php" class="lienImportant">Return</a>
         <div class="form">
-            <h2>Modifier le cd <?=$row['titre']?> de <?=$row['artiste']?></h2>
+            <h2>Modifier l'utilisateur <?=$row['nom']?> aka <?=$row['pseudo']?></h2>
             <p class="erreur_message">
                 <?php 
                 if(isset($message)){
@@ -53,16 +53,12 @@
                 ?>
             </p><br>
             <form action="" method="POST">
-                <label>Titre</label>
-                <input type="text" name="titre" value="<?=$row['titre']?>">
-                <label>Genre</label>
-                <input type="text" name="genre" value="<?=$row['genre']?>">
-                <label>Artiste</label>
-                <input type="text" name="artiste" value="<?=$row['artiste']?>">
-                <label>Prix Unitaire</label>
-                <input type="text" name="prixUnitaire" value="<?=$row['prixUnitaire']?>">
-                <label>Chemin image</label>
-                <input type="text" name="image" value="<?=$row['image']?>">
+                <label>Nom</label>
+                <input type="text" name="nom" value="<?=$row['nom']?>" required>
+                <label>Mot de passe</label>
+                <input type="text" name="pwd" value="<?=$row['pwd']?>" required>
+                <label>Pseudo</label>
+                <input type="text" name="pseudo" value="<?=$row['pseudo']?>" required>
                 <input type="submit" value="Modifier" name="button">
             </form>
         </div>
