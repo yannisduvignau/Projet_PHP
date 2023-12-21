@@ -71,6 +71,7 @@ if (isset($_SESSION["user_id"])){
         <option value="genre">Par genre</option>
     </select>
     <select name="sens">
+        <option value="">Ordre ...</option>
         <option value="asc">Croissant</option>
         <option value="desc">Décroissant</option>
     </select>
@@ -96,32 +97,44 @@ if (isset($_SESSION["user_id"])){
                 if ($_POST['sens']=="asc") {
                     $req = mysqli_query($connexion, "SELECT * FROM $nomTableCds ORDER BY artiste ASC");
                 }
-                else {
+                else if ($_POST['sens']=="desc") {
                     $req = mysqli_query($connexion, "SELECT * FROM $nomTableCds ORDER BY artiste DESC");
+                }
+                else {
+                    $req = mysqli_query($connexion, "SELECT * FROM $nomTableCds");
                 }
             }
             else if($_POST['tri']=="titre"){
                 if ($_POST['sens']=="asc") {
                     $req = mysqli_query($connexion, "SELECT * FROM $nomTableCds ORDER BY titre ASC");
                 }
-                else {
+                else if ($_POST['sens']=="desc") {
                     $req = mysqli_query($connexion, "SELECT * FROM $nomTableCds ORDER BY titre DESC");
+                }
+                else {
+                    $req = mysqli_query($connexion, "SELECT * FROM $nomTableCds");
                 }
             }
             else if($_POST['tri']=="prix"){
                 if ($_POST['sens']=="asc") {
                     $req = mysqli_query($connexion, "SELECT * FROM $nomTableCds ORDER BY prixUnitaire ASC");
                 }
-                else {
+                else if ($_POST['sens']=="desc") {
                     $req = mysqli_query($connexion, "SELECT * FROM $nomTableCds ORDER BY prixUnitaire DESC");
+                }
+                else {
+                    $req = mysqli_query($connexion, "SELECT * FROM $nomTableCds");
                 }
             }
             else if($_POST['tri']=="genre"){
                 if ($_POST['sens']=="asc") {
                     $req = mysqli_query($connexion, "SELECT * FROM $nomTableCds ORDER BY genre ASC");
                 }
-                else {
+                else if ($_POST['sens']=="desc") {
                     $req = mysqli_query($connexion, "SELECT * FROM $nomTableCds ORDER BY genre DESC");
+                }
+                else {
+                    $req = mysqli_query($connexion, "SELECT * FROM $nomTableCds");
                 }
             }
             else {
