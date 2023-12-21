@@ -32,7 +32,7 @@ if ($row = mysqli_fetch_assoc($result)) {
             <input type="hidden" name="produit_id" value="'.$id.'">
             <input type="hidden" name="produit_image" value="'.$image.'">
             <input type="hidden" name="produit_titre" value="'.$titre.'">
-            <input type="hidden" name="produit_prix" value="'.$prixUnitaire.'">
+            <input type="number" style="visibility:hidden;" name="produit_prix" value="'.$prixUnitaire.'">
             <input type="number" name="produit_qte" value="1" step="1" style="box-shadow:3px 3px 3px #33333350">
             <button type="submit" name="ajouter_panier" class="btn-link">Ajouter au panier</button>
         </form>

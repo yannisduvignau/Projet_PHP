@@ -285,9 +285,9 @@
                 if (is_array($item)) {
                     // Affichage contenu panier
                     echo '<li><img src="'.$item['image'].'" alt="titre" style="max-width:100px;">';
-                    echo '<span style="margin-left:5%;"><b><i>Titre</i> :</b> ' . $item['titre'] . '&nbsp;&nbsp;&nbsp - <b>Prix :</b> $' . $item['prix'] . ' - <i>Quantité</i> : ' . $item['quantite'] . '</span><span style="margin-left:25%;"> <b>Sous-total :</b> $' . intval($item['prix'])*intval($item['quantite']) . '</span></li>';
+                    echo '<span style="margin-left:5%;"><b><i>Titre</i> :</b> ' . $item['titre'] . '&nbsp;&nbsp;&nbsp - <b>Prix :</b> $' . $item['prix'] . ' - <i>Quantité</i> : ' . $item['quantite'] . '</span><br/><b>Sous-total :</b> $' . $item['prix']*$item['quantite'] . '</li>';
                     $cptCds += $item['quantite'];
-                    $prixTotal += intval($item['prix'])*intval($item['quantite']);
+                    $prixTotal += $item['prix']*$item['quantite'];
                 } else {
                     echo '<li> Erreur: élément de panier invalide </li>';
                 }

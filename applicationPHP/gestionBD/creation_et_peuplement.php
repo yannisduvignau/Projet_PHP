@@ -40,7 +40,7 @@ $sql = "CREATE TABLE IF NOT EXISTS $nomTableCds (
     titre VARCHAR(50) NOT NULL,
     genre VARCHAR(50) NOT NULL,
     artiste VARCHAR(50) NOT NULL,
-    prixUnitaire INTEGER NOT NULL,
+    prixUnitaire DECIMAL(65,2) NOT NULL,
     image VARCHAR(100) NOT NULL
 )";
 
