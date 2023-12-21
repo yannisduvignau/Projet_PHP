@@ -6,7 +6,7 @@ $id = $_GET['id'];
 //requete de delete
 $req = mysqli_query($connexion, "DELETE FROM CD WHERE id=$id");
 //redirection vers page
-//header("Loqcation: backoffice.php");
-echo '<script type="text/javascript">window.location = "./backoffice.php";</script>';
+//header("Location: backofficeCds.php");
+echo '<script type="text/javascript">window.location = "./backofficeCds.php";</script>';
 
 ?>

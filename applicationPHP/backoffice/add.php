@@ -23,8 +23,8 @@
             //requte de modif
             $req = mysqli_query($connexion, "INSERT INTO $nomTableCds (titre, genre, artiste,prixUnitaire,image) VALUES('$titre', '$genre', '$artiste',$prixUnitaire,'$image')");
             if($req){
-                //header("Location: backoffice.php");
-                echo '<script type="text/javascript">window.location = "./backoffice.php";</script>';
+                //header("Location: backofficeCds.php");
+                echo '<script type="text/javascript">window.location = "./backofficeCds.php";</script>';
             }else {
                 $message = "CD non ajouté";
             }
@@ -35,7 +35,7 @@
     ?>
     
     <div class="hero">
-        <a href="backoffice.php" class="lienImportant">Return</a>
+        <a href="backofficeCds.php" class="lienImportant">Return</a>
         <div class="form">
             <h2>Ajouter un cd</h2>
             <p class="erreur_message">

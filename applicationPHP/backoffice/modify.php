@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="gestion.scss">
-    <title>Modify</title>
+    <title>Modify Cds</title>
 </head>
 <body>
     <?php
@@ -27,10 +27,10 @@
         //vérifier que les champs ont été remplis
         if(isset($titre) && isset($genre) && isset($artiste) && isset($prixUnitaire)){
             //requte de modif
-            $req = mysqli_query($connexion, "UPDATE $nomTableCds SET titre = '$titre', genre = '$genre', artiste = '$artiste', prixUnitaire = '$prixUnitaire' WHERE id = '$id' ");
+            $req = mysqli_query($connexion, "UPDATE $nomTableCds SET titre = '$titre', genre = '$genre', artiste = '$artiste', prixUnitaire = '$prixUnitaire', image ='$image' WHERE id = '$id' ");
             if($req){
-                //header("Location: backoffice.php");
-                echo '<script type="text/javascript">window.location = "./backoffice.php";</script>';
+                //header("Location: backofficeCds.php");
+                echo '<script type="text/javascript">window.location = "./backofficeCds.php";</script>';
             }else {
                 $message = "Cd non modifié";
             }
@@ -41,7 +41,7 @@
     ?>
     
     <div class="hero">
-        <a href="backoffice.php" class="lienImportant">Return</a>
+        <a href="backofficeCds.php" class="lienImportant">Return</a>
         <div class="form">
             <h2>Modifier le cd <?=$row['titre']?> de <?=$row['artiste']?></h2>
             <p class="erreur_message">
@@ -60,6 +60,8 @@
                 <input type="text" name="artiste" value="<?=$row['artiste']?>">
                 <label>Prix Unitaire</label>
                 <input type="text" name="prixUnitaire" value="<?=$row['prixUnitaire']?>">
+                <label>Chemin image</label>
+                <input type="text" name="image" value="<?=$row['image']?>">
                 <input type="submit" value="Modifier" name="button">
             </form>
         </div>

@@ -36,17 +36,47 @@ if (isset($_SESSION["user_id"])){
 </head>
 <body>
     <!--Si l'utilisateur est admin alors: 
-    <?php if($is_admin):?>
+    ?php if($is_admin):?>
     <a id="adminButton" href="./backoffice.php" class="lienImportant" style="visibility:hidden;position:absolute;top:2%;">Aller au BackOffice</a>
-    <?php endif;?>-->
+    ?php endif;?-->
 
-    <a id="adminButton" href="backoffice/backoffice.php" class="lienImportant" style="visibility:hidden;position:absolute;top:2%;">Aller au BackOffice</a>
-    <img style="position:absolute;top:2%;right:5%;width:80px;height:auto;" src="images/logoCDIcon.png" alt="Logo"></img>
+    <!-- Si connecté -->
+    <?php if(isset($_SESSION['login']) && isset($_SESSION['pseudo'])/* && isset($_SESSION['pwd']) */)
+    {
+        echo '<script>console.log("Connecté");</script>';
+        echo '<p style="position:absolute;top:4%;right:12%;">'.$_SESSION['pseudo'].'</p>';
+        echo '<a href="connexion/logout.php" class="lienImportant" style="position:absolute;top:2%;">Déconnexion</a>';
+        if($_SESSION['admin']){
+            echo '<a id="adminButton" href="backoffice/backoffice.php" class="lienImportant" style="visibility:visible;position:absolute;top:2%;left:13%">Aller au BackOffice</a>';
+        }
+    }
+    else {
+        echo '<script>console.log("Non connecté");</script>';
+    }
+    ?>
+
+    <!-- Si easteregg pour mode amdin <a id="adminButton" href="backoffice/backoffice.php" class="lienImportant" style="visibility:hidden;position:absolute;top:2%;">Aller au BackOffice</a> -->
+    <a href="connexion/pageConnexion.php"><img style="position:absolute;top:2%;right:5%;width:80px;height:auto;" src="images/logoCDIcon.png" alt="Logo" href="connexion/pageConnexion.php"></img></a>
     <h1>CD Store</h1>
     <p>=> Un site web de vente de CD (oui, oui, ça existe encore !) en ligne</p>
     <!-- Ajoutez le lien vers la page du panier -->
     <span><a href="regarder_panier.php" class="lienImportant">Voir le panier</a></span>
-    <span style="position:absolute;left:80%;"><a style="padding:10px 40px;" href="#" class="lienImportant">Filtrer</a></span>
+    <span style="position:absolute;left:80%;"><a id="btnTri" style="padding:10px 40px;" onclick="document.querySelector('#btnTri').style.transition='all 0s';document.querySelector('#btnTri').style.visibility='hidden';document.querySelector('#formTri').style.visibility='visible';" class="lienImportant">Trier</a></span>
+    <form id="formTri" style="visibility:hidden;" method="post" aciton="./index.php">
+    <select name="tri">
+        <option value="">Trier par ...</option>
+        <option value="auteur">Par auteur</option>
+        <option value="titre">Par titre</option>
+        <option value="prix">Par prix</option>
+        <option value="genre">Par genre</option>
+    </select>
+    <select name="sens">
+        <option value="">Ordre ...</option>
+        <option value="asc">Croissant</option>
+        <option value="desc">Décroissant</option>
+    </select>
+    <input type="submit" value="Appliquer les filtres" class="lienImportant"/>
+    </form>
     <br/><br/>
     <!-- Ajoutez une div pour afficher la réponse de la requête AJAX -->
     <div id="resultat"></div>
@@ -61,8 +91,59 @@ if (isset($_SESSION["user_id"])){
         $nomTableCds = $res[0];
         $nomTableUser = $res[1];
         $connexion = $res[2];
-        //requete pour afficher la liste des utilisateurs
-        $req = mysqli_query($connexion, "SELECT * FROM $nomTableCds");
+        //requete pour afficher la liste des cds
+        if (isset($_POST['tri']) && isset($_POST['sens'])) {
+            if($_POST['tri']=="auteur"){
+                if ($_POST['sens']=="asc") {
+                    $req = mysqli_query($connexion, "SELECT * FROM $nomTableCds ORDER BY artiste ASC");
+                }
+                else if ($_POST['sens']=="desc") {
+                    $req = mysqli_query($connexion, "SELECT * FROM $nomTableCds ORDER BY artiste DESC");
+                }
+                else {
+                    $req = mysqli_query($connexion, "SELECT * FROM $nomTableCds");
+                }
+            }
+            else if($_POST['tri']=="titre"){
+                if ($_POST['sens']=="asc") {
+                    $req = mysqli_query($connexion, "SELECT * FROM $nomTableCds ORDER BY titre ASC");
+                }
+                else if ($_POST['sens']=="desc") {
+                    $req = mysqli_query($connexion, "SELECT * FROM $nomTableCds ORDER BY titre DESC");
+                }
+                else {
+                    $req = mysqli_query($connexion, "SELECT * FROM $nomTableCds");
+                }
+            }
+            else if($_POST['tri']=="prix"){
+                if ($_POST['sens']=="asc") {
+                    $req = mysqli_query($connexion, "SELECT * FROM $nomTableCds ORDER BY prixUnitaire ASC");
+                }
+                else if ($_POST['sens']=="desc") {
+                    $req = mysqli_query($connexion, "SELECT * FROM $nomTableCds ORDER BY prixUnitaire DESC");
+                }
+                else {
+                    $req = mysqli_query($connexion, "SELECT * FROM $nomTableCds");
+                }
+            }
+            else if($_POST['tri']=="genre"){
+                if ($_POST['sens']=="asc") {
+                    $req = mysqli_query($connexion, "SELECT * FROM $nomTableCds ORDER BY genre ASC");
+                }
+                else if ($_POST['sens']=="desc") {
+                    $req = mysqli_query($connexion, "SELECT * FROM $nomTableCds ORDER BY genre DESC");
+                }
+                else {
+                    $req = mysqli_query($connexion, "SELECT * FROM $nomTableCds");
+                }
+            }
+            else {
+                $req = mysqli_query($connexion, "SELECT * FROM $nomTableCds");
+            }
+        }
+        else {
+            $req = mysqli_query($connexion, "SELECT * FROM $nomTableCds");
+        }
         if(mysqli_num_rows($req)==0){
             //s'il n'y as pas de cd d'inscrit
             echo "Il n'y as pas de cd d'inscrit";
@@ -148,7 +229,8 @@ if (isset($_SESSION["user_id"])){
         }
     </script>
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/egg.js/1.0/egg.min.js"></script>
+    <!-- Pour EasterEgg de passage en mode admin -->
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/egg.js/1.0/egg.min.js"></script>
     <script type="text/javascript">
     var adminBool = false;
     
@@ -176,6 +258,6 @@ if (isset($_SESSION["user_id"])){
     }, "NotAdminMode");
 
     egg2.listen();
-    </script>
+    </script> -->
 </body>
 </html>
