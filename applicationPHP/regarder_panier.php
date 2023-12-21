@@ -4,6 +4,9 @@
     Date :  du xx/xx au xx/xx
     Description : Page d'accueil du site de vente de CD en ligne
 */
+$mauvaisNumero = false;
+$mauvaiseDate = false;
+
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Simule le paiement (ajoute vos vérifications ici)
@@ -13,11 +16,47 @@
 
             // Effectue les vérifications nécessaires ici
             //On simulera le paiement en vérifiant la saisie des 16 chiffres et vérifiant que le dernier est identique au premier, et que la date de validité est supérieure à la date du jour + 3 mois.
-
-            // Si tout est OK, affiche la confirmation
-            header('Location: confirmation.php');
-            exit();
+            if (validateCreditCardNumber($credit_card_number)&& validateExpirationDate($expiration_date)) {
+                // Si tout est OK, rediriger vers la confirmation
+                header('Location: confirmation.php');
+                exit();
+            } else {
+                // Sinon, afficher un message d'erreur
+                if(!validateCreditCardNumber($credit_card_number)){
+                    $mauvaisNumero = true; 
+                }
+                if(!validateExpirationDate($expiration_date)){
+                    $mauvaiseDate = true; 
+                }
+            }
         }
+    }
+    function validateCreditCardNumber($number) {
+        // Supprimer les espaces du numéro de carte
+        $cleanedNumber = str_replace(' ', '', $number);
+        
+        // Vérifier que le numéro de carte a 16 chiffres
+        if (preg_match('/^\d{16}$/', $cleanedNumber)) {
+            // Vérifier que le premier et le dernier chiffre sont identiques
+            return $cleanedNumber[0] === $cleanedNumber[15];
+        }
+
+        return false;
+    }
+    
+    function validateExpirationDate($date) {
+        // Supprimer les espaces du numéro de carte
+        $cleanedDate = str_replace(' ', '', $date);
+        // Vérifier que la date d'expiration est au format MM/AAAA
+        $expirationDate = DateTime::createFromFormat('m/Y', $cleanedDate);
+            
+        // Ajouter trois mois à la date actuelle
+        $currentDate = new DateTime();
+        $interval = new DateInterval('P3M');
+        $currentDate->add($interval);
+
+        // Vérifier que la date d'expiration est supérieure à la date actuelle + 3 mois
+        return $expirationDate > $currentDate;
     }
 ?>
 <!DOCTYPE html>
@@ -319,8 +358,14 @@
             echo '<input type="text" placeholder="NOM PRENOM" name="getName" required></br>';
             echo '<label for="credit_card_number" required minlength="12" maxlength="12">Credit Card Number : </label></br>';
             echo '<input type="text" placeholder="XXXX XXXX XXXX XXXX" name="credit_card_number" required></br>';
+            if($mauvaisNumero){
+                echo "<div style='padding:10px;border-radius:15px;font-size:15px;background-color:#FFBBBB;color:red;margin-top:-20px;'>Saisie du numéro de carte incorrect</div>";
+            }
             echo "<label for='expiration_date'>Date d'expiration : </label></br>";
             echo '<input type="text" placeholder="MM / YYYY" name="expiration_date" required></br>';
+            if($mauvaiseDate){
+                echo "<div style='padding:10px;border-radius:15px;font-size:15px;background-color:#FFBBBB;color:red;margin-top:-20px;'>Saisie de la date d'expiration incorrect</div>";
+            }
             echo '<button type="submit" name="checkout" class="lienImportant">Valider</button>';
             echo '</form>';
             echo ' </div>';

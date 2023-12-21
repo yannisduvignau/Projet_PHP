@@ -35,10 +35,6 @@ if (isset($_SESSION["user_id"])){
     <link href="css/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <!--Si l'utilisateur est admin alors: 
-    ?php if($is_admin):?>
-    <a id="adminButton" href="./backoffice.php" class="lienImportant" style="visibility:hidden;position:absolute;top:2%;">Aller au BackOffice</a>
-    ?php endif;?-->
 
     <!-- Si connecté -->
     <?php if(isset($_SESSION['login']) && isset($_SESSION['pseudo'])/* && isset($_SESSION['pwd']) */)
