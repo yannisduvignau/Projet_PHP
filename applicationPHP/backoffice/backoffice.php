@@ -12,7 +12,7 @@
     {
         echo '<script>console.log("Connecté");</script>';
         echo '<p style="position:absolute;top:4%;right:12%;">'.$_SESSION['pseudo'].'</p>';
-        echo '<a href="connexion/logout.php" class="lienImportant" style="position:absolute;top:2%;">Déconnexion</a>';
+        echo '<a href="../connexion/logout.php" class="lienImportant" style="position:absolute;top:2%;">Déconnexion</a>';
     }
     else {
         echo '<script>console.log("Non connecté");</script>';

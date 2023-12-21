@@ -61,7 +61,7 @@ if (isset($_SESSION["user_id"])){
     <p>=> Un site web de vente de CD (oui, oui, ça existe encore !) en ligne</p>
     <!-- Ajoutez le lien vers la page du panier -->
     <span><a href="regarder_panier.php" class="lienImportant">Voir le panier</a></span>
-    <span style="position:absolute;left:80%;"><a style="padding:10px 40px;" href="#" class="lienImportant">Filtrer</a></span>
+    <span style="position:absolute;left:80%;"><a style="padding:10px 40px;" href="#" class="lienImportant">Trier</a></span>
     <br/><br/>
     <!-- Ajoutez une div pour afficher la réponse de la requête AJAX -->
     <div id="resultat"></div>
@@ -76,8 +76,13 @@ if (isset($_SESSION["user_id"])){
         $nomTableCds = $res[0];
         $nomTableUser = $res[1];
         $connexion = $res[2];
-        //requete pour afficher la liste des utilisateurs
-        $req = mysqli_query($connexion, "SELECT * FROM $nomTableCds");
+        //requete pour afficher la liste des cds
+        if (isset($_POST['tri'])) {
+            # code...
+        }
+        else {
+            $req = mysqli_query($connexion, "SELECT * FROM $nomTableCds");
+        }
         if(mysqli_num_rows($req)==0){
             //s'il n'y as pas de cd d'inscrit
             echo "Il n'y as pas de cd d'inscrit";
