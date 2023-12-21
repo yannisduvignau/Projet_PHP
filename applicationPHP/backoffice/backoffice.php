@@ -21,17 +21,9 @@
 
     <!-- Si easteregg pour mode amdin <a id="adminButton" href="backoffice/backoffice.php" class="lienImportant" style="visibility:hidden;position:absolute;top:2%;">Aller au BackOffice</a> -->
     <a href="../connexion/pageConnexion.php"><img style="position:absolute;top:2%;right:5%;width:80px;height:auto;" src="../images/logoCDIcon.png" alt="Logo" href="connexion/pageConnexion.php"></img></a>
-
-    <br/>
-    <br/><br/><br/>
-    <br/><br/><br/>
-    <br/><br/><br/>
-    <br/><br/>
-    <a class="lienImportant" href="backOfficeCds.php">backoffice cds</a>
-    <br/><br/>
-    <br/><br/><br/>
-    <br/><br/><br/>
-    <br/><br/>
-    <a class="lienImportant" href="backOfficeUsers.php">backoffice users</a>
+    <div style="display:unset !important;position:absolute;top:50%;left:40%;width:600px;">
+        <span><a class="lienImportant" href="backOfficeCds.php">backoffice cds</a></span>
+        <span><a class="lienImportant" href="backOfficeUsers.php">backoffice users</a></span>
+    </div>
 </body>
 </html>
