@@ -61,7 +61,21 @@ if (isset($_SESSION["user_id"])){
     <p>=> Un site web de vente de CD (oui, oui, ça existe encore !) en ligne</p>
     <!-- Ajoutez le lien vers la page du panier -->
     <span><a href="regarder_panier.php" class="lienImportant">Voir le panier</a></span>
-    <span style="position:absolute;left:80%;"><a style="padding:10px 40px;" href="#" class="lienImportant">Trier</a></span>
+    <span style="position:absolute;left:80%;"><a id="btnTri" style="padding:10px 40px;" onclick="document.querySelector('#btnTri').style.transition='all 0s';document.querySelector('#btnTri').style.visibility='hidden';document.querySelector('#formTri').style.visibility='visible';" class="lienImportant">Trier</a></span>
+    <form id="formTri" style="visibility:hidden;" method="post" aciton="./index.php">
+    <select name="tri">
+        <option value="">Trier par ...</option>
+        <option value="auteur">Par auteur</option>
+        <option value="titre">Par titre</option>
+        <option value="prix">Par prix</option>
+        <option value="genre">Par genre</option>
+    </select>
+    <select name="sens">
+        <option value="asc">Croissant</option>
+        <option value="desc">Décroissant</option>
+    </select>
+    <input type="submit" value="Appliquer les filtres" class="lienImportant"/>
+    </form>
     <br/><br/>
     <!-- Ajoutez une div pour afficher la réponse de la requête AJAX -->
     <div id="resultat"></div>
@@ -77,8 +91,42 @@ if (isset($_SESSION["user_id"])){
         $nomTableUser = $res[1];
         $connexion = $res[2];
         //requete pour afficher la liste des cds
-        if (isset($_POST['tri'])) {
-            # code...
+        if (isset($_POST['tri']) && isset($_POST['sens'])) {
+            if($_POST['tri']=="auteur"){
+                if ($_POST['sens']=="asc") {
+                    $req = mysqli_query($connexion, "SELECT * FROM $nomTableCds ORDER BY artiste ASC");
+                }
+                else {
+                    $req = mysqli_query($connexion, "SELECT * FROM $nomTableCds ORDER BY artiste DESC");
+                }
+            }
+            else if($_POST['tri']=="titre"){
+                if ($_POST['sens']=="asc") {
+                    $req = mysqli_query($connexion, "SELECT * FROM $nomTableCds ORDER BY titre ASC");
+                }
+                else {
+                    $req = mysqli_query($connexion, "SELECT * FROM $nomTableCds ORDER BY titre DESC");
+                }
+            }
+            else if($_POST['tri']=="prix"){
+                if ($_POST['sens']=="asc") {
+                    $req = mysqli_query($connexion, "SELECT * FROM $nomTableCds ORDER BY prixUnitaire ASC");
+                }
+                else {
+                    $req = mysqli_query($connexion, "SELECT * FROM $nomTableCds ORDER BY prixUnitaire DESC");
+                }
+            }
+            else if($_POST['tri']=="genre"){
+                if ($_POST['sens']=="asc") {
+                    $req = mysqli_query($connexion, "SELECT * FROM $nomTableCds ORDER BY genre ASC");
+                }
+                else {
+                    $req = mysqli_query($connexion, "SELECT * FROM $nomTableCds ORDER BY genre DESC");
+                }
+            }
+            else {
+                $req = mysqli_query($connexion, "SELECT * FROM $nomTableCds");
+            }
         }
         else {
             $req = mysqli_query($connexion, "SELECT * FROM $nomTableCds");

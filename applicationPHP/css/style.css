@@ -246,3 +246,9 @@ form .btn-link:hover {
 div.disque:hover > .cd {
     transform: rotate3d(1, 1, 1, 360deg);
 }
+
+#formTri{
+    position:absolute;
+    left:80%;
+    top:14%
+}
