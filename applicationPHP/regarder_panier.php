@@ -45,15 +45,22 @@ $mauvaiseDate = false;
     }
     
     function validateExpirationDate($date) {
+        // Vérifier que le mois est compris entre 01 et 12
+        (int) $month = substr($date, 0, 2);
+        if ($month < 1 || $month > 12) {
+            return false;
+        }
+
         // Supprimer les espaces du numéro de carte
         $cleanedDate = str_replace(' ', '', $date);
         // Vérifier que la date d'expiration est au format MM/AAAA
         $expirationDate = DateTime::createFromFormat('m/Y', $cleanedDate);
-            
+   
         // Ajouter trois mois à la date actuelle
         $currentDate = new DateTime();
         $interval = new DateInterval('P3M');
         $currentDate->add($interval);
+    
 
         // Vérifier que la date d'expiration est supérieure à la date actuelle + 3 mois
         return $expirationDate > $currentDate;
