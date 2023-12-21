@@ -22,7 +22,7 @@ $nomTableCds = "CD";
 $sql = "CREATE TABLE IF NOT EXISTS $nomTableUser (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(50) NOT NULL,
-    pseudo VARCHAR(50) NOT NULL,
+    pseudo VARCHAR(50) NOT NULL UNIQUE,
     pwd VARCHAR(100) NOT NULL,
     admin BOOLEAN NOT NULL
 )";
@@ -118,7 +118,7 @@ if ($totalLignes == 0) {
 if ($connexion->query($sql) === TRUE) {
     echo '<script type="text/javascript">console.log("Données ajoutées avec succès");</script>';
 } else {
-    echo '<script type="text/javascript">console.log("Erreur lors de l`ajout des données");</script';
+    echo '<script type="text/javascript">console.log("Erreur lors de l`ajout des données");</script>';
 }
 }else{
 echo '<script type="text/javascript">console.log("La table n`est pas vide");</script>';

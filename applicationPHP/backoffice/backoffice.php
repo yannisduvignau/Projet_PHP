@@ -1,61 +1,37 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="gestion.scss">
-    <title>Gestion</title>
+    <title>CD Store</title>
+    <link href="../css/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <div class="hero">
-        <a href="../index.php" class="lienImportant">Return</a>
-        <a href="add.php" style="position:absolute;right:9%;top:2.5%;color:#00A233;font-size:30px;font-weight:bold;text-decoration:none;">Ajoute un CD</a>
-        <a href="add.php" style="position:absolute;right:2%;top:2%;"><img src="../images/add.png" alt="Plus_to_add" style="height:50px;"></a>
-        <a style="position:relative;top:13%;left:15%;color:#333;font-size:30px;font-weight:bold;">BIENVENUE dans le Backoffice du CD Store</a>
-        <div class="container"style="border: 3px solid black;">
-            <table >
-                <tr id="items">
-                    <th>Id</th>
-                    <th>Titre</th>
-                    <th>Genre</th>
-                    <th>Artiste</th>
-                    <th>Prix Unitaire</th>
-                    <th>Modifier</th>
-                    <th>Supprimer</th>
-                </tr>
+    <?php if(isset($_SESSION['login']) && isset($_SESSION['pseudo']))
+    {
+        echo '<script>console.log("Connecté");</script>';
+        echo '<p style="position:absolute;top:4%;right:12%;">'.$_SESSION['pseudo'].'</p>';
+        echo '<a href="connexion/logout.php" class="lienImportant" style="position:absolute;top:2%;">Déconnexion</a>';
+    }
+    else {
+        echo '<script>console.log("Non connecté");</script>';
+    }
+    ?>
 
-                <?php
-                //inclure la base donnée
-                include_once "../gestionBD/database.php";
-                //requete pour afficher la liste des utilisateurs
-                $req = mysqli_query($connexion, "SELECT * FROM CD");
-                if(mysqli_num_rows($req)==0){
-                    //s'il n'y as pas de cd d'inscrit
-                    echo "Il n'y as pas de cd d'inscrit";
-                }else{
-                    //si il y as des cds, afficher la liste de tous
-                    while ($row=mysqli_fetch_assoc($req)) {
-                        ?>
-                        <tr>
-                            <td><?= $row['id']?></td>
-                            <td><?= $row['titre']?></td>
-                            <td><?= $row['genre']?></td>
-                            <td><?= $row['artiste']?></td>
-                            <td><?= $row['prixUnitaire']?>€</td>
-                            <td><a href="modify.php?id=<?= $row['id']?>"><img src="../images/pen.png" alt="pen_to_modify"></a> </td>
-                            <td><a href="delete.php?id=<?= $row['id']?>"><img src="../images/trash.png" alt="trash_to_delete"></a> </td>
-                        </tr>
-                        <?php
-                    }
-                }
+    <!-- Si easteregg pour mode amdin <a id="adminButton" href="backoffice/backoffice.php" class="lienImportant" style="visibility:hidden;position:absolute;top:2%;">Aller au BackOffice</a> -->
+    <a href="../connexion/pageConnexion.php"><img style="position:absolute;top:2%;right:5%;width:80px;height:auto;" src="../images/logoCDIcon.png" alt="Logo" href="connexion/pageConnexion.php"></img></a>
 
-
-                ?>
-
-
-            </table>
-        </div>
-    </div>
+    <br/>
+    <br/><br/><br/>
+    <br/><br/><br/>
+    <br/><br/><br/>
+    <br/><br/>
+    <a class="lienImportant" href="backOfficeCds.php">backoffice cds</a>
+    <br/><br/>
+    <br/><br/><br/>
+    <br/><br/><br/>
+    <br/><br/>
+    <a class="lienImportant" href="backOfficeUsers.php">backoffice users</a>
 </body>
 </html>

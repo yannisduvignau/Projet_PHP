@@ -5,28 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="gestion.scss">
-    <title>Modify</title>
+    <title>Modify User</title>
 </head>
 <body>
     <?php
 
     //connexion
-    include_once "../gestionBD/database.php";
+    include_once "../gestionBD/creation_et_peuplement.php";
+    // Récupération des variables
+    $nomTableUser = $res[1];
+    $connexion = $res[2];
+    //recup l'id
+    $id = $_GET['id'];
+    //requete d'affichage
+    $req = mysqli_query($connexion, "SELECT * FROM $nomTableUser WHERE id = $id ");
+    $row = mysqli_fetch_assoc($req);
 
-    $nomTableCds = "CD";
 
     if(isset($_POST['button'])){
         //extraction des infos envoyé par POST
         extract($_POST);
         //vérifier que les champs ont été remplis
-        if(isset($titre) && isset($genre) && isset($artiste) && isset($prixUnitaire) && isset($image)){
+        if(isset($titre) && isset($genre) && isset($artiste) && isset($prixUnitaire)){
             //requte de modif
-            $req = mysqli_query($connexion, "INSERT INTO $nomTableCds (titre, genre, artiste,prixUnitaire,image) VALUES('$titre', '$genre', '$artiste',$prixUnitaire,'$image')");
+            $req = mysqli_query($connexion, "UPDATE $nomTableCds SET titre = '$titre', genre = '$genre', artiste = '$artiste', prixUnitaire = '$prixUnitaire', image ='$image' WHERE id = '$id' ");
             if($req){
                 //header("Location: backofficeCds.php");
                 echo '<script type="text/javascript">window.location = "./backofficeCds.php";</script>';
             }else {
-                $message = "CD non ajouté";
+                $message = "Cd non modifié";
             }
         }else {
             $message = "Veuillez remplir tous les champs !";
@@ -37,7 +44,7 @@
     <div class="hero">
         <a href="backofficeCds.php" class="lienImportant">Return</a>
         <div class="form">
-            <h2>Ajouter un cd</h2>
+            <h2>Modifier le cd <?=$row['titre']?> de <?=$row['artiste']?></h2>
             <p class="erreur_message">
                 <?php 
                 if(isset($message)){
@@ -47,16 +54,16 @@
             </p><br>
             <form action="" method="POST">
                 <label>Titre</label>
-                <input type="text" name="titre">
+                <input type="text" name="titre" value="<?=$row['titre']?>">
                 <label>Genre</label>
-                <input type="text" name="genre" >
+                <input type="text" name="genre" value="<?=$row['genre']?>">
                 <label>Artiste</label>
-                <input type="text" name="artiste">
+                <input type="text" name="artiste" value="<?=$row['artiste']?>">
                 <label>Prix Unitaire</label>
-                <input type="text" name="prixUnitaire" >
-                <label>Image</label>
-                <input type="text" name="image" placeholder="chemin/vers/votre/image">
-                <input type="submit" value="Ajouter" name="button">
+                <input type="text" name="prixUnitaire" value="<?=$row['prixUnitaire']?>">
+                <label>Chemin image</label>
+                <input type="text" name="image" value="<?=$row['image']?>">
+                <input type="submit" value="Modifier" name="button">
             </form>
         </div>
     </div>

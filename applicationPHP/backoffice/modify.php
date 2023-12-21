@@ -29,8 +29,8 @@
             //requte de modif
             $req = mysqli_query($connexion, "UPDATE $nomTableCds SET titre = '$titre', genre = '$genre', artiste = '$artiste', prixUnitaire = '$prixUnitaire', image ='$image' WHERE id = '$id' ");
             if($req){
-                //header("Location: backoffice.php");
-                echo '<script type="text/javascript">window.location = "./backoffice.php";</script>';
+                //header("Location: backofficeCds.php");
+                echo '<script type="text/javascript">window.location = "./backofficeCds.php";</script>';
             }else {
                 $message = "Cd non modifié";
             }
@@ -41,7 +41,7 @@
     ?>
     
     <div class="hero">
-        <a href="backoffice.php" class="lienImportant">Return</a>
+        <a href="backofficeCds.php" class="lienImportant">Return</a>
         <div class="form">
             <h2>Modifier le cd <?=$row['titre']?> de <?=$row['artiste']?></h2>
             <p class="erreur_message">

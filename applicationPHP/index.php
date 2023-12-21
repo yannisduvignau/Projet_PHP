@@ -36,12 +36,27 @@ if (isset($_SESSION["user_id"])){
 </head>
 <body>
     <!--Si l'utilisateur est admin alors: 
-    <?php if($is_admin):?>
+    ?php if($is_admin):?>
     <a id="adminButton" href="./backoffice.php" class="lienImportant" style="visibility:hidden;position:absolute;top:2%;">Aller au BackOffice</a>
-    <?php endif;?>-->
+    ?php endif;?-->
 
-    <a id="adminButton" href="backoffice/backoffice.php" class="lienImportant" style="visibility:hidden;position:absolute;top:2%;">Aller au BackOffice</a>
-    <img style="position:absolute;top:2%;right:5%;width:80px;height:auto;" src="images/logoCDIcon.png" alt="Logo"></img>
+    <!-- Si connecté -->
+    <?php if(isset($_SESSION['login']) && isset($_SESSION['pseudo'])/* && isset($_SESSION['pwd']) */)
+    {
+        echo '<script>console.log("Connecté");</script>';
+        echo '<p style="position:absolute;top:4%;right:12%;">'.$_SESSION['pseudo'].'</p>';
+        echo '<a href="connexion/logout.php" class="lienImportant" style="position:absolute;top:2%;">Déconnexion</a>';
+        if($_SESSION['admin']){
+            echo '<a id="adminButton" href="backoffice/backoffice.php" class="lienImportant" style="visibility:visible;position:absolute;top:2%;left:13%">Aller au BackOffice</a>';
+        }
+    }
+    else {
+        echo '<script>console.log("Non connecté");</script>';
+    }
+    ?>
+
+    <!-- Si easteregg pour mode amdin <a id="adminButton" href="backoffice/backoffice.php" class="lienImportant" style="visibility:hidden;position:absolute;top:2%;">Aller au BackOffice</a> -->
+    <a href="connexion/pageConnexion.php"><img style="position:absolute;top:2%;right:5%;width:80px;height:auto;" src="images/logoCDIcon.png" alt="Logo" href="connexion/pageConnexion.php"></img></a>
     <h1>CD Store</h1>
     <p>=> Un site web de vente de CD (oui, oui, ça existe encore !) en ligne</p>
     <!-- Ajoutez le lien vers la page du panier -->
@@ -148,7 +163,8 @@ if (isset($_SESSION["user_id"])){
         }
     </script>
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/egg.js/1.0/egg.min.js"></script>
+    <!-- Pour EasterEgg de passage en mode admin -->
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/egg.js/1.0/egg.min.js"></script>
     <script type="text/javascript">
     var adminBool = false;
     
@@ -176,6 +192,6 @@ if (isset($_SESSION["user_id"])){
     }, "NotAdminMode");
 
     egg2.listen();
-    </script>
+    </script> -->
 </body>
 </html>
