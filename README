@@ -1,0 +1,45 @@
+####################################
+#     Description des dossiers     #
+####################################
+
+1 - Dossier "images"      : dossier composé de toutes les images du site
+2 - Dossier "gestionBD"   : dossier servant à gérer la base de données
+3 - Dossier "css"         : dossier pour le style des pages
+4 - Dossier "connexion"   : dossier servant à gérer les connexions et inscription utilisateur
+5 - Dossier "backoffice"  : dossier composé des fichiers de gestion du backoffice
+6 - Dossier racine        : dossier composé de la page d'accueil et des pages liées
+
+
+####################################
+#     Description des fichiers     #
+####################################
+
+#   Dans dossier "gestionBD"
+  - fichier "database.php"               : (pas d'interface) fichier avec les connexions à la base de données pour Clément et pour Yannis
+  - fichier "creation_et_peuplement.php" : (pas d'interface) fichier de création des tables (cd et utilisateur) et de peuplement (pour avoir des données de base)
+
+#   Dans dossier "connexion"
+  - fichier "inscription.php"     : (pas d'interface) fichier d'ajout utilisateur qui vient de s'inscrire
+  - fichier "login.php"           : (pas d'interface) fichier qui connecte l'utilisateur à sa session
+  - fichier "logout.php"          : (pas d'interface) fichier qui déconnecte l'utilisateur de sa session
+  - fichier "pageConnexion.php"   : (interface)       fichier qui permet à un utilisateur de se connecter
+  - fichier "pageInscription.php" : (interface)       fichier qui permet à un utilisateur de s'inscrire
+
+#   Dans dossier "backoffice"
+  - fichier "add.php"             : (interface)       fichier qui permet à l'admin d'ajouter un utilisateur (formulaire d'ajout)
+  - fichier "backoffice.php"      : (interface)       fichier qui permet de choisir d'accéder au backoffice des utilisateurs ou celui des cds 
+  - fichier "backofficeCds.php"   : (interface)       fichier qui permet à l'admin de modifier, ajouter ou supprimer des cds
+  - fichier "backofficeUsers.php" : (interface)       fichier qui permet à l'admin de modifier, ajouter ou supprimer des utilisateurs
+  - fichier "delete.php"          : (pas d'interface) fichier qui supprime un cd désigné
+  - fichier "deleteUser.php"      : (pas d'interface) fichier qui supprime un utilisateur désigné
+  - fichier "modify.php"          : (interface)       fichier qui permet à l'admin de modifier un cd (formulaire de modification)
+  - fichier "modifyUser.php"      : (interface)       fichier qui permet à l'admin de modifier un utilisateur (formulaire de modification)
+
+#   Dans dossier racine
+  - fichier "ajouter_panier.php"  : (pas d'interface) fichier qui ajoute un cd désigné au panier
+  - fichier "chargerImage.php"    : (pas d'interface) fichier qui charger les images et les redimensionne
+  - fichier "confirmation.php"    : (interface)       fichier qui affiche la confirmation de l'achat (bon dérouler du système de paiement)
+  - fichier "get_cd_details.php"  : (pas d'interface) fichier qui récupére les détails du cd désigné
+  - fichier "index.php"           : (interface)       fichier page d'accueil
+  - fichier "regarder_panier.php" : (interface)       fichier qui permet de visualiser, payer ou vider le panier
+  - fichier "vider_panier.php"    : (pas d'interface) fichier qui vide le panier en cours
