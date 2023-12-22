@@ -1,7 +1,5 @@
 <?php
-// get_cd_details.php
-
-$cdId = $_POST['cd_id'];  // Assurez-vous de valider et nettoyer cette valeur côté serveur
+$cdId = $_POST['cd_id'];
 
 // Inclure la base de données et effectuer la requête pour obtenir les détails du CD
 include_once "gestionBD/database.php";

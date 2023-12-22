@@ -8,8 +8,7 @@ $connexion = $res[2];
 $id = $_GET['id'];
 //requete de delete
 $req = mysqli_query($connexion, "DELETE FROM $nomTableUser WHERE id=$id");
-//redirection vers page
-//header("Location: backofficeCds.php");
+
 echo '<script type="text/javascript">window.location = "./backofficeUsers.php";</script>';
 
 ?>

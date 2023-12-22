@@ -6,26 +6,6 @@
     Description : Page d'accueil du site de vente de CD en ligne
 */
 -->
-
-<!-- en php
-/*$is_admin = false;
-session_start();
-
-if (isset($_SESSION["user_id"])){
-    $mysqli = require __DIR__ . "/fct_php/database.php";
-
-    $sql = "SELECT * FROM register WHERE id = {$_SESSION["user_id"]}";
-
-    $result = $mysqli->query($sql);
-
-    $user = $result->fetch_assoc();
-
-    if ($_SESSION["user_id"]==1) {
-        $is_admin = true;
-    }
-}*/
-
--->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -36,7 +16,7 @@ if (isset($_SESSION["user_id"])){
 <body>
 
     <!-- Si connecté -->
-    <?php if(isset($_SESSION['login']) && isset($_SESSION['pseudo'])/* && isset($_SESSION['pwd']) */)
+    <?php if(isset($_SESSION['login']) && isset($_SESSION['pseudo']))
     {
         echo '<script>console.log("Connecté");</script>';
         echo '<p style="position:absolute;top:4%;right:12%;">'.$_SESSION['pseudo'].'</p>';

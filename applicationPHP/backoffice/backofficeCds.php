@@ -3,7 +3,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="gestion.scss">
+    <link rel="stylesheet" href="../css/gestion.css">
     <title>Gestion des cds</title>
 </head>
 <body>
