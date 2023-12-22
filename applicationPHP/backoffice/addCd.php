@@ -1,3 +1,10 @@
+<!--
+/**
+    Auteurs : Clement Mourgue et Yannis Duvignau
+    Description : Ajout d'un cd
+*/
+-->
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>

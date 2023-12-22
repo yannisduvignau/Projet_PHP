@@ -1,8 +1,7 @@
 <!--
 /**
     Auteurs : Clément Mourgue et Yannis Duvignau
-    Date :  du xx/xx au xx/xx
-    Description : Page d'accueil du site de vente de CD en ligne
+    Description : Page de confirmation (validation du paiement)
 */
 -->
 

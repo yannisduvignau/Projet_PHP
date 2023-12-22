@@ -1,8 +1,7 @@
 <?php session_start();
 /*
     Auteurs : Clement Mourgue et Yannis Duvignau
-    Date :  du xx/xx au xx/xx
-    Description : Page d'accueil du site de vente de CD en ligne
+    Description : Suppresion du panier en cours
 */
 
 // Vérifie si la variable de session 'cart' existe

@@ -1,3 +1,10 @@
+<!--
+/**
+    Auteurs : Clement Mourgue et Yannis Duvignau
+    Description : suppression d'un utilisateur
+*/
+-->
+
 <?php
 //connexion
 include_once "../gestionBD/creation_et_peuplement.php";

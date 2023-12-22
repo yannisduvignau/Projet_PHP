@@ -1,4 +1,5 @@
 <?php session_start();
+
 if(isset($_SESSION['login']) && isset($_SESSION['pseudo']))
 {
     echo '<script>alert("Vous étiez déjà connecté et vous avez donc été déconnecté de votre ancien profil pour pouvoir en créer un nouveau.");</script>';
@@ -31,17 +32,6 @@ if (isset($_POST['login']) && isset($_POST['pwd']) && isset($_POST['pseudo']) &&
     // Vérifier si l'enregistrement n'est pas déjà présent
     if ($totalLignes == 0) {
 
-        /* // Récupération du dernier id
-        $sql = "SELECT id FROM $nomTableUser ORDER BY id LIMIT 1";
-        $result = mysqli_query($connexion, $sql);
-
-        $lastId;
-
-        if ($row = mysqli_fetch_assoc($result)) {
-            $lastId = $row['id'];
-        } */
-        // Requête d'insertion de données dans la table Utilisateur
-        //$sql = "INSERT INTO $nomTableUser (/* id, */nom,pseudo,pwd,admin) VALUES /* $lastId, */'$idLogin','$pseudo','$pwdLogin',$isAdmin";
         $sql = "INSERT INTO $nomTableUser (nom,pseudo,pwd,admin) VALUES ('$idLogin','$pseudo','$pwdLogin',$isAdmin);";
 
         if ($connexion->query($sql) === TRUE) {
@@ -55,14 +45,6 @@ if (isset($_POST['login']) && isset($_POST['pwd']) && isset($_POST['pseudo']) &&
         echo '<script type="text/javascript">console.log("Profil déjà présent");</script>';
     }
 
-    /* echo '
-    <form action="login.php" method="post" style="visibility:hidden;">
-        <input type="text" name="login" value="'.$idLogin.'">
-        <input type="password" name="pwd" value="'.$pwdLogin.'">
-        <input type="text" name="pseudo" value="'.$pseudo.'">
-        <input type="number" name="admin" value="'.$isAdmin.'">
-        <input type="submit" value="Continuer" class="lienImportant" style="visibility:visible;">
-    </form>'; */
     echo '
     <form action="login.php" method="post" style="visibility:hidden;">
         <input type="text" name="login" value="'.$idLogin.'">

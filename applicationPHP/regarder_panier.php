@@ -1,9 +1,10 @@
 <?php session_start();
+
 /*
     Auteurs : Clement Mourgue et Yannis Duvignau
-    Date :  du xx/xx au xx/xx
-    Description : Page d'accueil du site de vente de CD en ligne
+    Description : Visualisation du panier en cours
 */
+
 $mauvaisNumero = false;
 $mauvaiseDate = false;
 
@@ -266,7 +267,7 @@ $mauvaiseDate = false;
 
             // Écoute les événements de saisie sur le numéro de carte de crédit
             creditCardNumberInput.addEventListener('input', function () {
-                // Obtene la valeur du champ
+                // Obtien la valeur du champ
                 let value = this.value;
 
                 // Supprime tous les espaces de la valeur
@@ -359,7 +360,7 @@ $mauvaiseDate = false;
             echo '</div>';
             echo '</div>';
             echo '</div>';
-            //Formulaire
+            //Formulaire de paiement
             echo '<form method="post" action="regarder_panier.php" class="formulairePaiement">';
             echo '<label for="getName">Nom et Prénom : </label></br>';
             echo '<input type="text" placeholder="NOM PRENOM" name="getName" required></br>';

@@ -1,4 +1,12 @@
 <?php session_start(); ?>
+
+<!--
+/**
+    Auteurs : Clement Mourgue et Yannis Duvignau
+    Description : backoffice des utilisateurs (ajout, suppresion et modification d'un cd possible...)
+*/
+-->
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>

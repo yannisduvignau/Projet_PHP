@@ -1,4 +1,12 @@
 ####################################
+#      Guide 1ere utilisation      #
+####################################
+
+1. Aller dans "gestion/database.php" et changer la connexion à la bd (les tables et le peuplement seront générés par le fichier "creation_et_peuplement.php")
+2. Pour se connecté ou s'inscrire, cliquez sur le logo du site
+
+
+####################################
 #     Description des dossiers     #
 ####################################
 

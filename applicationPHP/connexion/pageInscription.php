@@ -58,15 +58,6 @@
         <input type="text" name="pseudo" required>
         <br/> <br/>
         Êtes-vous admin ? 
-        <!-- V1 avec des radio button checkbox -->
-        <!-- <fieldset>
-            <legend>Êtes-vous admin ?</legend> -->
-                <!-- <input type="radio" name="ouiAdmin" />
-                <label>Oui</label>
-                <input type="radio" name="nonAdmin" checked />
-                <label>Non</label> -->
-        <!-- </fieldset> -->
-        <!-- V2 avec des select -->
         <select name="admin">
             <option value="0">Non</option>
             <option value="1">Oui</option>

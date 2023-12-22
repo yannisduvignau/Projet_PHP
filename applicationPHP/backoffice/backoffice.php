@@ -1,4 +1,12 @@
 <?php session_start(); ?>
+
+<!--
+/**
+    Auteurs : Clement Mourgue et Yannis Duvignau
+    Description : choix du backoffice (cd ou utilisateur)
+*/
+-->
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>

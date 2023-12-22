@@ -1,5 +1,4 @@
 <?php
-// Vers page depuis laquelle on se déconnecte ???
 
 // On démarre la session
 session_start ();

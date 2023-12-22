@@ -36,7 +36,6 @@ if (isset($_POST['login']) && isset($_POST['pwd'])) {
         echo '<script>alert("Connexion réussie en tant que '.$_SESSION['login'].'  '.$_SESSION['admin'].'   '.$_SESSION['pseudo'].'");</script>';
 
         // Connecté donc redirection vers la page principale
-        //echo '<script>window.location="../index.php";</script>';
         echo '<meta http-equiv="refresh" content="0;URL=../index.php">';
     }
     else // Sinon on propose l'inscription
@@ -48,12 +47,10 @@ if (isset($_POST['login']) && isset($_POST['pwd'])) {
         <form action="pageInscription.php" method="post" style="visibility:hidden;">
             <input type="text" name="login" value="'.$idLogin.'"></form>';
         echo '<script>document.querySelector("form").submit();</script>';
-        //echo '<meta http-equiv="refresh" content="0;URL=pageInscription.php">';
     }
 }
 else
 {
-    //header('location: pageInscription.php');
     echo '<script>window.location="pageInscription.php";</script>';
 }
 ?>

@@ -1,3 +1,10 @@
+<!--
+/**
+    Auteurs : Clement Mourgue et Yannis Duvignau
+    Description : récupération des données (détails) pour un cd donné
+*/
+-->
+
 <?php
 $cdId = $_POST['cd_id'];
 

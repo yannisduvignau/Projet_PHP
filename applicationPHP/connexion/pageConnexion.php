@@ -25,18 +25,6 @@
         echo '<script>console.log("Non connecté");</script>';
     }
     ?>
-    <!-- ?php
-    if(isset($_SESSION['login']) && isset($_SESSION['pseudo']))
-    {
-        echo '<script>alert("Vous étiez déjà connecté et vous avez donc été déconnecté.");</script>';
-        // On déconnecte et réinitialise la ession
-        // On détruit les variables de notre session
-        session_unset ();
-
-        // On détruit notre session
-        session_destroy ();
-    }
-    ?> -->
 
 
     <img style="position:absolute;top:2%;right:5%;width:80px;height:auto;" src="../images/logoCDIcon.png" alt="Logo"></img>

@@ -1,3 +1,10 @@
+<!--
+/**
+    Auteurs : Clement Mourgue et Yannis Duvignau
+    Description : page (formulaire) pour modifier un cd désigné
+*/
+-->
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>

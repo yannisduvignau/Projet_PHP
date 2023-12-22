@@ -1,7 +1,6 @@
 <!--
 /**
     Auteurs : Clement Mourgue et Yannis Duvignau
-    Date :  du xx/xx au xx/xx
     Description : Création et peuplement des données de base dans une base de données créer préalablement
 */
 -->
@@ -59,7 +58,6 @@ if ($connexion->query($sql) === TRUE) {
 ///   Table Utilisateur   ///
 /////////////////////////////
 
-// Nom de la table à vérifier
 
 // Requête pour compter le nombre de lignes dans la table
 $resultat = $connexion->query("SELECT COUNT(*) AS total FROM $nomTableUser");
@@ -85,9 +83,6 @@ if ($totalLignes == 0) {
 /////////////////////////////
 ///        Table CD       ///
 /////////////////////////////
-
-// Nom de la table à vérifier
-$nomTable = "CD";
 
 // Requête pour compter le nombre de lignes dans la table
 $resultat = $connexion->query("SELECT COUNT(*) as total FROM $nomTableCds");
@@ -124,8 +119,6 @@ if ($connexion->query($sql) === TRUE) {
 echo '<script type="text/javascript">console.log("La table n`est pas vide");</script>';
 }
 
-// Fermer la connexion
-//$connexion->close();
 $res = [$nomTableCds,$nomTableUser,$connexion];
 
 return $res;

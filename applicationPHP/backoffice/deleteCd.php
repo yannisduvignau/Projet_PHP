@@ -1,3 +1,10 @@
+<!--
+/**
+    Auteurs : Clement Mourgue et Yannis Duvignau
+    Description : suppression d'un cd
+*/
+-->
+
 <?php
 //connexion
 include_once "../gestionBD/database.php";

@@ -1,7 +1,6 @@
 <!--
 /**
     Auteurs : Clement Mourgue et Yannis Duvignau
-    Date :  du xx/xx au xx/xx
     Description : Création de la connection vers la base de données
 */
 -->
