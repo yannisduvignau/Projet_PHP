@@ -149,7 +149,7 @@ if (isset($_SESSION["user_id"])){
                 echo '<div class="disque">';
                 echo '<div class="cd">';
                 echo '<a class="btn-link" onclick="showDetails(\'' . $row['id'] . '\')">Voir les détails</a>';
-                echo '<img src="' . $row['image'] . '" alt="' . $row['titre'] . '">';
+                echo '<img src="./chargerImage.php?chemImage=' . $row['image'] . '&sizeX=100&sizeY=100" alt="' . $row['titre'] . '">';
                 echo '<br>' . $row['titre'] . '<br>' . $row['artiste'] . '<br>';
                 echo '</div>';
                 echo '</div>';

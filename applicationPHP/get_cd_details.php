@@ -24,7 +24,7 @@ if ($row = mysqli_fetch_assoc($result)) {
     echo '
         <span class="close" onclick="closeModal()">&times;</span>
         <h1> '. $titre . '</h1>
-        ' . ($image ? '<img src="'.$image.'" alt="'.$titre.'">' : '') . '
+        ' . ($image ? '<img src="./chargerImage.php?chemImage=' . $image . '&sizeX=300&sizeY=300" alt="'.$titre.'">' : '') . '
         <p>Auteur: '.$artiste.'</p>
         <p>Genre: '.$genre.'</p>
         <p class="price">Prix : '.$prixUnitaire.'</p>

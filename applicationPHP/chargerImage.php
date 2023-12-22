@@ -1,24 +1,32 @@
 <?php
-function loadJpg($imgSource,$dimx,$dimY)
-{
-    $size = GetImageSize("$imgSource");
-    $xSrc = $size[0];
-    $ySrc = $size[1];
-
-    $test_x = round(($dimx/$xSrc)*$ySrc);
-    $test_y = round(($dimy/$ySrc)*$xSrc);
-
-    $redImg = ImageCreateTrueColor($dimx,$dimy);
-    $imageSource = ImageCreateFromJpeg("$imgSource");
-    ImageCopyResampled($redImg,$imageSource,$dimx,$dimy,$xSrc,$ySrc);
-
-    ImageDestroy($imageSource);
-
-    return $redImg;
-}
- 
-header('Content-Type: image/jpeg');
- 
-imagejpeg($img,$_GET['chemImage']);
-imagedestroy($img);
+    if (substr($_GET['chemImage'],-3)==="jpg") {
+        header("Content-type: image/jpeg");
+        $nomImage = './' . $_GET['chemImage'];
+        $tailleImage = getimagesize($nomImage);
+        $ancienneL = $tailleImage[0];
+        $ancienneH = $tailleImage[1];
+        $nouvelleL = $_GET['sizeX'];
+        $nouvelleH = $_GET['sizeY'];
+        $image = imagecreatefromjpeg($nomImage);
+        $vignette = imagecreatetruecolor($nouvelleL, $nouvelleH);
+        imageCopyResampled($vignette, $image, 0, 0, 0, 0, $nouvelleL, $nouvelleH, $ancienneL, $ancienneH);
+        ImageJpeg($vignette);
+        ImageDestroy($image);
+        ImageDestroy($vignette);
+    }
+    else {
+        header("Content-type: image/png");
+        $nomImage = './' . $_GET['chemImage'];
+        $tailleImage = getimagesize($nomImage);
+        $ancienneL = $tailleImage[0];
+        $ancienneH = $tailleImage[1];
+        $nouvelleL = $_GET['sizeX'];
+        $nouvelleH = $_GET['sizeY'];
+        $image = imagecreatefrompng($nomImage);
+        $vignette = imagecreatetruecolor($nouvelleL, $nouvelleH);
+        imageCopyResampled($vignette, $image, 0, 0, 0, 0, $nouvelleL, $nouvelleH, $ancienneL, $ancienneH);
+        ImagePng($vignette);
+        ImageDestroy($image);
+        ImageDestroy($vignette);
+    }
 ?>
