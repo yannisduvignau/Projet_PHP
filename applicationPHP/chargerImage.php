@@ -22,7 +22,7 @@
         $ancienneH = $tailleImage[1];
         $nouvelleL = $_GET['sizeX'];
         $nouvelleH = $_GET['sizeY'];
-        $image = imagecreatefromjpeg($nomImage);
+        $image = imagecreatefrompng($nomImage);
         $vignette = imagecreatetruecolor($nouvelleL, $nouvelleH);
         imageCopyResampled($vignette, $image, 0, 0, 0, 0, $nouvelleL, $nouvelleH, $ancienneL, $ancienneH);
         ImagePng($vignette);
