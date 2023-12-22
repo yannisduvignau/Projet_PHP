@@ -1,6 +1,6 @@
 <!--
 /**
-    Auteurs : Clement Mourgue et Yannis Duvignau
+    Auteurs : Clément Mourgue et Yannis Duvignau
     Date :  du xx/xx au xx/xx
     Description : Page d'accueil du site de vente de CD en ligne
 */
@@ -10,7 +10,6 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirmation de votre achat</title>
     <link href="css/style.css" rel="stylesheet" type="text/css"/>
     <style>
