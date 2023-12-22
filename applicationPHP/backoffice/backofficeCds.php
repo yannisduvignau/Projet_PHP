@@ -3,16 +3,14 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="gestion.scss">
     <title>Gestion des cds</title>
 </head>
 <body>
     <div class="hero">
         <a href="../index.php" class="lienImportant">Return</a>
-        <a href="add.php" style="position:absolute;right:9%;top:2.5%;color:#00A233;font-size:30px;font-weight:bold;text-decoration:none;">Ajoute un CD</a>
-        <a href="add.php" style="position:absolute;right:2%;top:2%;"><img src="../images/add.png" alt="Plus_to_add" style="height:50px;"></a>
+        <a href="addCd.php" style="position:absolute;right:9%;top:2.5%;color:#00A233;font-size:30px;font-weight:bold;text-decoration:none;">Ajoute un CD</a>
+        <a href="addCd.php" style="position:absolute;right:2%;top:2%;"><img src="../images/add.png" alt="Plus_to_add" style="height:50px;"></a>
         <a style="position:relative;top:13%;left:15%;color:#333;font-size:30px;font-weight:bold;">BIENVENUE dans le Backoffice du CD Store côté CDs</a>
         <div class="container"style="border: 3px solid black;">
             <table >
@@ -47,8 +45,8 @@
                             <td><?= $row['genre']?></td>
                             <td><?= $row['artiste']?></td>
                             <td><?= $row['prixUnitaire']?>€</td>
-                            <td><a href="modify.php?id=<?= $row['id']?>"><img src="../images/pen.png" alt="pen_to_modify"></a> </td>
-                            <td><a href="delete.php?id=<?= $row['id']?>"><img src="../images/trash.png" alt="trash_to_delete"></a> </td>
+                            <td><a href="modifyCd.php?id=<?= $row['id']?>"><img src="../images/pen.png" alt="pen_to_modify"></a> </td>
+                            <td><a href="deleteCd.php?id=<?= $row['id']?>"><img src="../images/trash.png" alt="trash_to_delete"></a> </td>
                         </tr>
                         <?php
                     }

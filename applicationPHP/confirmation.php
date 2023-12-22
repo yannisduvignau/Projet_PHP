@@ -11,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confirmation</title>
+    <title>Confirmation de votre achat</title>
     <link href="css/style.css" rel="stylesheet" type="text/css"/>
     <style>
         body {
@@ -51,6 +51,6 @@
     <h1 style="margin-top:10vh;">Commande confirmée !</h1>
     <p>Merci pour votre achat. Votre commande a été confirmée.</p>
     <img style="top: 20%; left: 40%;margin-top:5%;" src="images/shopping.gif" width="20%" height="auto" alt="shopping image"></img></br>
-    <a id="backToIndex" class="lienImportant" href="vider_panier.php">Back to CD Store</a>
+    <a id="backToIndex" class="lienImportant" href="vider_panier.php">Retour au CD Store</a>
 </body>
 </html>
